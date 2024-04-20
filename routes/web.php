@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +23,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('backend')->middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class,  'index'])->name('backend.dashboard');
+});
+
 Auth::routes();
 
+Route::get('/logout', function () {
+    return redirect()->back();
+});
+
+Route::fallback(function () {
+    return redirect('pages-error-404.html');
+});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
