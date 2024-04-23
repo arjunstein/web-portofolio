@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -25,6 +26,10 @@ Route::get('/', function () {
 
 Route::prefix('backend')->middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class,  'index'])->name('backend.dashboard');
+    Route::get('/about/{id}', [AboutController::class, 'index'])->name('backend.about');
+    Route::get('/about/edit/{id}', [AboutController::class, 'edit'])->name('backend.about.edit');
+    Route::put('/about/{id}', [AboutController::class, 'update'])->name('backend.about.update');
+    Route::get('/about/change_password', [AboutController::class, 'changePassword'])->name('backend.about.change-password');
 });
 
 Auth::routes();
