@@ -1,11 +1,20 @@
 <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('backend.dashboard') }}">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
         </a>
     </li>
     <!-- End Dashboard Nav -->
+
+    <li class="nav-heading">Manage Data</li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('backend.about', ['id' => $about]) }}">
+            <i class="bi bi-file-earmark"></i>
+            <span>About</span>
+        </a>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">

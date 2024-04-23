@@ -4,8 +4,10 @@
 <head>
 
     @include('layouts._partials.head')
-
+    @stack('styles')
 </head>
+
+@vite([])
 
 <body>
     <!-- ======= Header ======= -->
@@ -42,6 +44,8 @@
             class="bi bi-arrow-up-short"></i></a>
 
     @include('layouts._partials.scripts')
+
+    @stack('addon-script')
 
 </body>
 
