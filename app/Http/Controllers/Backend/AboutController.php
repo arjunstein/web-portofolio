@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AboutController extends Controller
 {
@@ -19,9 +20,13 @@ class AboutController extends Controller
 
     public function edit($id)
     {
-        $user = Auth::user();
-        $about = About::findOrFail($id);
-        return view('backend.about.edit', compact('user', 'about'));
+        try {
+            $user = Auth::user();
+            $about = About::findOrFail($id);
+            return view('backend.about.edit', compact('user', 'about'));
+        } catch (\Throwable $th) {
+            return redirect('pages-error-404.html');
+        }
     }
 
     public function update(Request $request, $id)
@@ -60,8 +65,33 @@ class AboutController extends Controller
         }
     }
 
-    public function changePassword(User $user)
+    public function changePassword($id)
     {
-        return view('backend.about.change-password', compact('user'));
+        $about = About::findOrFail($id);
+        return view('backend.about.change-password', compact('about'));
+    }
+
+    public function updatePassword(Request $request)
+    {
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+
+        #Match The Old Password
+        if (!Hash::check($request->old_password, auth()->user()->password)) {
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+        if ($request->old_password === $request->new_password) {
+            return redirect()->back()->with("error", "New password cannot be the same as old password!");
+        }
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return redirect()->back()->with("success", "Password berhasil diubah");
     }
 }

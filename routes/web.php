@@ -5,10 +5,6 @@ use App\Http\Controllers\Backend\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +25,8 @@ Route::prefix('backend')->middleware('auth')->group(function () {
     Route::get('/about/{id}', [AboutController::class, 'index'])->name('backend.about');
     Route::get('/about/edit/{id}', [AboutController::class, 'edit'])->name('backend.about.edit');
     Route::put('/about/{id}', [AboutController::class, 'update'])->name('backend.about.update');
-    Route::get('/about/change_password', [AboutController::class, 'changePassword'])->name('backend.about.change-password');
+    Route::get('/about/change_password/{id}', [AboutController::class, 'changePassword'])->name('backend.about.change-password');
+    Route::post('/about/update_password', [AboutController::class,  'updatePassword'])->name('backend.about.update-password');
 });
 
 Auth::routes();
