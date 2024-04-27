@@ -53,7 +53,8 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('backend.about.change-password') }}" class="nav-link">Change Password</a>
+                                <a href="{{ route('backend.about.change-password', ['id' => $about]) }}"
+                                    class="nav-link">Change Password</a>
                             </li>
 
                         </ul>

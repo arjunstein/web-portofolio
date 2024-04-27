@@ -14,6 +14,18 @@
             </ol>
         </nav>
     </div><!-- End Page Title -->
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
+            {{ $message }}
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+    @if ($message = Session::get('error'))
+        <div class="alert alert-danger bg-danger text-light border-0 alert-dismissible fade show" role="alert">
+            {{ $message }}
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
     <section class="section profile">
         <div class="row">
             <div class="col-xl-4">
@@ -43,11 +55,11 @@
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
                             <li class="nav-item">
-                                <a href="{{ route('backend.about') }}" class="nav-link">Overview</a>
+                                <a href="{{ route('backend.about', ['id' => $about]) }}" class="nav-link">Overview</a>
                             </li>
 
                             <li class="nav-item">
-                                <a href="{{ route('backend.about.edit') }}" class="nav-link">Edit
+                                <a href="{{ route('backend.about.edit', ['id' => $about]) }}" class="nav-link">Edit
                                     Profile</a>
                             </li>
 
@@ -57,16 +69,20 @@
 
                         </ul>
                         <div class="tab-content pt-2">
-                            <div class="tab-pane fade show active pt-3" id="profile-change-password">
+                            <div class="tab-pane fade show active pt-3" id="">
                                 <!-- Change Password Form -->
-                                <form>
-
+                                <form action="{{ route('backend.about.update-password') }}" method="POST">
+                                    @csrf
                                     <div class="row mb-3">
-                                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current
+                                        <label for="" class="col-md-4 col-lg-3 col-form-label">Current
                                             Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="password" type="password" class="form-control"
-                                                id="currentPassword">
+                                            <input name="old_password" type="password"
+                                                class="form-control @error('old_password') is-invalid @enderror"
+                                                id="">
+                                            @error('old_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -74,7 +90,12 @@
                                         <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New
                                             Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                            <input name="new_password" type="password"
+                                                class="form-control @error('new_password') is-invalid @enderror""
+                                                id="newPassword">
+                                            @error('new_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -82,8 +103,8 @@
                                         <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New
                                             Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="renewpassword" type="password" class="form-control"
-                                                id="renewPassword">
+                                            <input name="new_password_confirmation" type="password" class="form-control"
+                                                id="">
                                         </div>
                                     </div>
 

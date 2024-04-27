@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard page')
 
 @section('content')
     <div class="pagetitle">
         <h1>Dashboard</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('backend.dashboard') }}">Home</a></li>
                 <li class="breadcrumb-item">Pages</li>
                 <li class="breadcrumb-item active">Blank</li>
             </ol>
