@@ -11,8 +11,15 @@
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('backend.about', ['id' => $about]) }}">
-            <i class="bi bi-file-earmark"></i>
+            <i class="ri-file-user-fill"></i>
             <span>About</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('backend.skills') }}">
+            <i class="bx bxl-react"></i>
+            <span>Skills</span>
         </a>
     </li>
 
