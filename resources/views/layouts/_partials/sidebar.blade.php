@@ -24,6 +24,13 @@
     </li>
 
     <li class="nav-item">
+    <a class="nav-link collapsed" href="{{ route('backend.education') }}">
+        <i class="bx bxl-react"></i>
+        <span>Education</span>
+    </a>
+</li>
+
+    <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-gem"></i><span>Icons</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>

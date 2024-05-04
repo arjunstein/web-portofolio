@@ -2,9 +2,13 @@
 
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\EducationController;
 use App\Http\Controllers\Backend\SkillController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +43,14 @@ Route::prefix('backend')->middleware('auth')->group(function () {
     Route::get('/skills/edit/{id}', [SkillController::class, 'edit'])->name('backend.skills.edit');
     Route::put('/skills/update/{id}', [SkillController::class, 'update'])->name('backend.skills.update');
     Route::delete('/skills/delete/{id}', [SkillController::class, 'destroy'])->name('backend.skills.delete');
+
+    // education route
+    Route::get('/education', [EducationController::class, 'index'])->name('backend.education');
+    Route::get('/education/create', [EducationController::class, 'create'])->name('backend.education.create');
+    Route::post('/education/store', [EducationController::class, 'store'])->name('backend.education.store');
+    Route::get('/education/edit/{id}', [EducationController::class, 'edit'])->name('backend.education.edit');
+    Route::put('/education/update/{id}', [EducationController::class, 'update'])->name('backend.education.update');
+    Route::delete('/education/delete/{id}', [EducationController::class, 'destroy'])->name('backend.education.delete');
 });
 
 Auth::routes();
@@ -50,4 +62,4 @@ Route::get('/logout', function () {
 Route::fallback(function () {
     return redirect('pages-error-404.html');
 });
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
