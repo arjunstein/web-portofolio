@@ -23,13 +23,7 @@
 
                         <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
                         <h2>{{ Auth::user()->name }}</h2>
-                        <h3>{{ $about->title }}</h3>
-                        <div class="social-links mt-2">
-                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                        </div>
+                        <h3>{{ isset($user->about->title) ? $user->about->title : 'Not Filled' }}</h3>
                     </div>
                 </div>
 
@@ -62,7 +56,7 @@
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <h5 class="card-title">Summary</h5>
-                                <p class="small fst-italic">{{ isset($about->summary) ? $about->summary : 'Not filled' }}
+                                <p class="small fst-italic">{{ isset($user->about->summary) ? $user->about->summary : 'Not filled' }}
                                 </p>
                                 <h5 class="card-title">Profile Details</h5>
 
@@ -79,8 +73,8 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Age</div>
                                     <div class="col-lg-9 col-md-8">
-                                        @if (isset($about->birthday))
-                                            {{ date('Y') - date('Y', strtotime($about->birthday)) }} yrs
+                                        @if (isset($user->about->birthday))
+                                            {{ date('Y') - date('Y', strtotime($user->about->birthday)) }} yrs
                                         @else
                                             Not filled
                                         @endif
@@ -89,57 +83,57 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Job</div>
-                                    <div class="col-lg-9 col-md-8">{{ isset($about->title) ? $about->title : 'Not filled' }}
+                                    <div class="col-lg-9 col-md-8">{{ isset($user->about->title) ? $user->about->title : 'Not filled' }}
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Country</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ isset($about->country) ? $about->country : 'Not filled' }}</div>
+                                        {{ isset($user->about->country) ? $user->about->country : 'Not filled' }}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Address</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ isset($about->address) ? $about->address : 'Not filled' }}</div>
+                                        {{ isset($user->about->address) ? $user->about->address : 'Not filled' }}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Phone</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ isset($about->phone) ? $about->phone : 'Not filled' }}
+                                        {{ isset($user->about->phone) ? $user->about->phone : 'Not filled' }}
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Whatsapp</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ isset($about->whatsapp) ? $about->whatsapp : 'Not filled' }}</div>
+                                        {{ isset($user->about->whatsapp) ? $user->about->whatsapp : 'Not filled' }}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Linkedin</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ isset($about->linkedin) ? $about->linkedin : 'Not filled' }}</div>
+                                        {{ isset($user->about->linkedin) ? $user->about->linkedin : 'Not filled' }}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Instagram</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ isset($about->instagram) ? $about->instagram : 'Not filled' }}</div>
+                                        {{ isset($user->about->instagram) ? $user->about->instagram : 'Not filled' }}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Twitter</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ isset($about->twitter) ? $about->twitter : 'Not filled' }}</div>
+                                        {{ isset($user->about->twitter) ? $user->about->twitter : 'Not filled' }}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Facebook</div>
                                     <div class="col-lg-9 col-md-8">
-                                        {{ isset($about->facebook) ? $about->facebook : 'Not filled' }}</div>
+                                        {{ isset($user->about->facebook) ? $user->about->facebook : 'Not filled' }}</div>
                                 </div>
 
                             </div>

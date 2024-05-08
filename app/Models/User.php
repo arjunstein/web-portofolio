@@ -54,4 +54,9 @@ class User extends Authenticatable
             $model->{$model->getKeyName()} = Str::uuid()->toString();
         });
     }
+
+    public function about()
+    {
+        return $this->hasOne('App\Models\About');
+    }
 }
