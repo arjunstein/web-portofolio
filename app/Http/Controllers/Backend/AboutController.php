@@ -57,8 +57,8 @@ class AboutController extends Controller
                 $validatedData['image'] = $imagePath;
             }
             $about = About::findOrFail($id);
-            $about->fill($validatedData);
-            $about->save();
+            $about->update($validatedData);
+
             return redirect()->route('backend.about.edit', ['id' => $about])->with('success', 'Profile successfully updated');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', 'Profile was failed update');
