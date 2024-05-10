@@ -58,7 +58,6 @@
                                         <div class="col-12">
                                             <label class="form-label">Email</label>
                                             <div class="input-group">
-                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
                                                 <input type="email" name="email"
                                                     class="form-control @error('email') is-invalid @enderror">
                                                 @error('email')

@@ -1,6 +1,5 @@
  <div class="copyright">
-     &copy; Copyright <strong><span>NiceAdmin</span></strong
-     >. All Rights Reserved
+     &copy; Modified with &#x2764; by <strong><span>Arjunstein</span></strong>
  </div>
  <div class="credits">
      <!-- All the links in the footer should remain intact. -->
