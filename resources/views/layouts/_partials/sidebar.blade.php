@@ -24,11 +24,25 @@
     </li>
 
     <li class="nav-item">
-    <a class="nav-link collapsed" href="{{ route('backend.education') }}">
-        <i class="bx bxl-react"></i>
-        <span>Education</span>
-    </a>
-</li>
+        <a class="nav-link collapsed" href="{{ route('backend.education') }}">
+            <i class="bx bxl-react"></i>
+            <span>Education</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('backend.education') }}">
+            <i class="bx bxl-react"></i>
+            <span>Portfolio Project</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('backend.experience') }}">
+            <i class="bx bxl-react"></i>
+            <span>Experiences</span>
+        </a>
+    </li>
 
     <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
