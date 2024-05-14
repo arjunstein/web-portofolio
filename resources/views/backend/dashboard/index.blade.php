@@ -87,8 +87,8 @@
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>10</h6>
-                                        <span class="text-success small pt-1 fw-bold"></span>
+                                        <h6>{{ count($experience) }}</h6>
+                                        <span class="text-success small pt-1 fw-bold">Places</span>
                                     </div>
                                 </div>
                             </div>
