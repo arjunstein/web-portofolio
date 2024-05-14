@@ -3,10 +3,12 @@
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EducationController;
+use App\Http\Controllers\Backend\ExperienceController;
 use App\Http\Controllers\Backend\SkillController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -51,6 +53,14 @@ Route::prefix('backend')->middleware('auth')->group(function () {
     Route::get('/education/edit/{id}', [EducationController::class, 'edit'])->name('backend.education.edit');
     Route::put('/education/update/{id}', [EducationController::class, 'update'])->name('backend.education.update');
     Route::delete('/education/delete/{id}', [EducationController::class, 'destroy'])->name('backend.education.delete');
+
+    // experience route
+    Route::get('/experience', [ExperienceController::class, 'index'])->name('backend.experience');
+    Route::get('/experience/create', [ExperienceController::class, 'create'])->name('backend.experience.create');
+    Route::post('/experience/store', [ExperienceController::class, 'store'])->name('backend.experience.store');
+    Route::get('/experience/edit/{id}', [ExperienceController::class, 'edit'])->name('backend.experience.edit');
+    Route::put('/experience/update/{id}', [ExperienceController::class, 'update'])->name('backend.experience.update');
+    Route::delete('/experience/delete/{id}', [ExperienceController::class, 'destroy'])->name('backend.experience.delete');
 });
 
 Auth::routes();
