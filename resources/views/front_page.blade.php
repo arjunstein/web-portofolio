@@ -87,134 +87,20 @@
                 <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">HTML</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                            @foreach ($skills as $skill)
+                                <div class="col-md-6">
+                                    <div class="progress-container progress-primary">
+                                        <span class="progress-badge">{{ $skill->skillName }}</span>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-primary" data-aos="progress-full"
+                                                data-aos-offset="10" data-aos-duration="2000" role="progressbar"
+                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $skill->percentase }}%">
+                                            </div>
+                                            <span class="progress-value">{{ $skill->percentase }}%</span>
                                         </div>
-                                        <span class="progress-value">80%</span>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">PHP</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                        </div>
-                                        <span class="progress-value">70%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">JavaScript</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                        </div>
-                                        <span class="progress-value">60%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">MySQL</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                        </div>
-                                        <span class="progress-value">60%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">LARAVEL</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                        </div>
-                                        <span class="progress-value">70%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">GIT</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                        </div>
-                                        <span class="progress-value">70%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">Rest api's</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                        </div>
-                                        <span class="progress-value">50%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">CodeIgniter</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                        </div>
-                                        <span class="progress-value">50%</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">JQuery</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%">
-                                        </div>
-                                        <span class="progress-value">70%</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="progress-container progress-primary">
-                                    <span class="progress-badge">Css</span>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary" data-aos="progress-full"
-                                            data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                        </div>
-                                        <span class="progress-value">50%</span>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -333,42 +219,30 @@
         <div class="section">
             <div class="container cc-education">
                 <div class="h4 text-center mb-4 title">Education</div>
-                <div class="card">
-                    <div class="row"></div>
-                </div>
-                <div class="card">
-                    <div class="row">
-                        <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
-                            data-aos-duration="500">
-                            <div class="card-body cc-education-header">
-                                <p>2017 - 2021</p>
-                                <div class="h5">Bachelor's Degree</div>
-                            </div>
-                        </div>
-                        <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
-                            <div class="card-body">
-                                <div class="h5">
-                                    Bachelor of Computer Science / Teknik Informatika
+                @foreach ($education as $edu)
+                    <div class="card">
+                        <div class="row">
+                            <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
+                                data-aos-duration="500">
+                                <div class="card-body cc-education-header">
+                                    <p>{{ $edu->start_year }} - {{ $edu->end_year }}</p>
+                                    <div class="h5">{{ $edu->title }}</div>
                                 </div>
-                                <p class="category">Panca Sakti University Bekasi</p>
-                                <p>
-                                    Panca Sakti University (PSU) Bekasi is present in the era
-                                    of a new life order, marked by the signing of the Decree
-                                    of the Minister of Education and Culture Number:
-                                    575/M/2020 dated June 11, 2020 concerning Permits for
-                                    Merger of Teacher Training and Education Colleges in Panca
-                                    Sakti Bekasi in Bekasi City, Greater Indonesia College of
-                                    Economics in Jakarta, and Cikarang College of Information
-                                    and Computer Management in Bekasi Regency become Panca
-                                    Sakti Bekasi University in Bekasi City, West Java Province
-                                    Organized by the Bekasi Panca Sakti Foundation. <br />
-                                    More info click
-                                    <a href="https://panca-sakti.ac.id/">https://panca-sakti.ac.id/</a>
-                                </p>
+                            </div>
+                            <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
+                                <div class="card-body">
+                                    <div class="h5">
+                                        {{ $edu->major }}
+                                    </div>
+                                    <p class="category">{{ $edu->school }} | GPA: {{ $edu->gpa }}</p>
+                                    <p>
+                                        {{ $edu->description }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

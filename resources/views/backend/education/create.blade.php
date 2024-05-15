@@ -83,7 +83,15 @@
                                     </span>
                                 @enderror
                             </div>
-
+                            <div class="col-md-6">
+                                <label class="form-label">Description</label>
+                                <textarea type="text" name="description" rows="5" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                                @error('description')
+                                    <span class="invalid-feedback" role="alert">
+                                        <p>{{ $message }}</p>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                                 <a href="{{ route('backend.education') }}" class="btn btn-secondary">Back</a>

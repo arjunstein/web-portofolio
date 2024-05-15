@@ -31,6 +31,7 @@ class EducationController extends Controller
             'gpa' => 'required|numeric|between:0.00,99.99',
             'start_year' => 'required|numeric|between:1970,2030',
             'end_year' => 'required|numeric|between:1970,2045',
+            'description' => 'required|string|max:1000'
         ]);
 
         if ($request->end_year < $request->start_year) {
@@ -62,6 +63,7 @@ class EducationController extends Controller
             'gpa' => 'required|numeric|between:0.00,99.99',
             'start_year' => 'required|numeric|between:1970,2030',
             'end_year' => 'required|numeric|between:1970,2045',
+            'description' => 'required|string|max:1000'
         ]);
 
         if ($request->end_year < $request->start_year) {
