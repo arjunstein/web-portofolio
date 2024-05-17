@@ -15,9 +15,9 @@
                             <div class="h2 title">{{ $about->user->name }}</div>
                             <p class="category text-white">{{ $about->title }}</p>
                             <a class="btn btn-primary smooth-scroll mr-2"
-                                href="https://www.linkedin.com/in/arjun-gunawan-68617a186/" data-aos="zoom-in"
+                                href="{{ $about->linkedin }}" data-aos="zoom-in" target="_blank"
                                 data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary"
-                                href="https://drive.google.com/file/d/1lGxq2PTJk_t5PZ-H49B_00FnHEWfpo2O/view?usp=sharing"
+                                href="#"
                                 data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
                         </div>
                     </div>
@@ -25,12 +25,12 @@
                         <div class="container">
                             <div class="button-container">
                                 <a class="btn btn-default btn-round btn-lg btn-icon"
-                                    href="https://web.facebook.com/arjun.gunawan.1257" rel="tooltip"
+                                    href="{{ $about->facebook }}" target="_blank" rel="tooltip"
                                     title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a
                                     class="btn btn-default btn-round btn-lg btn-icon"
-                                    href="https://www.instagram.com/arjungunawan9/" rel="tooltip"
+                                    href="{{ $about->instagram }}" target="_blank" rel="tooltip"
                                     title="Follow me on Instagram"><i class="fa fa-instagram"></i></a><a
-                                    class="btn btn-default btn-round btn-lg btn-icon" href="https://wa.me/6287777115297/"
+                                    class="btn btn-default btn-round btn-lg btn-icon" href="https://wa.me/62{{ $about->whatsapp }}" target="_blank"
                                     rel="tooltip" title="Chat me on Whatsapp"><i class="fa fa-whatsapp"></i></a>
                             </div>
                         </div>
