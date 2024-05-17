@@ -1,12 +1,12 @@
 <div class="container text-center">
-    <a class="cc-facebook btn btn-link" href="https://web.facebook.com/arjun.gunawan.1257"><i
+    <a class="cc-facebook btn btn-link" href="{{ $about->facebook }}" target="_blank"><i
             class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
-    <a class="cc-instagram btn btn-link" href="https://www.instagram.com/arjungunawan9/"><i
+    <a class="cc-instagram btn btn-link" href="{{ $about->instagram }}" target="_blank"><i
             class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-    <a class="cc-whatsapp btn btn-link" href="https://wa.me/6287777115297"><i class="fa fa-whatsapp fa-2x"
+    <a class="cc-whatsapp btn btn-link" href="https://wa.me/62{{ $about->whatsapp }}" target="_blank"><i class="fa fa-whatsapp fa-2x"
             aria-hidden="true"></i></a>
 </div>
-<div class="h4 title text-center">Arjun Gunawan</div>
+<div class="h4 title text-center">{{ $user->name }}</div>
 <div class="text-center text-muted">
     <p>
         2021 -
