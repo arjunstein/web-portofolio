@@ -7,6 +7,7 @@ use App\Models\About;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
 class AboutController extends Controller
@@ -54,6 +55,13 @@ class AboutController extends Controller
                 $image = $request->file('image');
                 $image->storeAs('public/profile', $image->hashName());
                 $about = About::findOrFail($id);
+
+                //delete old image
+                $path = storage_path('app/public/profile/' . $about->image);
+                if (File::exists($path)) {
+                    File::delete($path);
+                }
+
                 $about->birthday = $validatedData['birthday'];
                 $about->title = $validatedData['title'];
                 $about->gender = $validatedData['gender'];

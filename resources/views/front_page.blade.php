@@ -198,7 +198,10 @@
                             <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
                                 data-aos-duration="500">
                                 <div class="card-body cc-experience-header">
-                                    <p>{{ \Carbon\Carbon::parse($exp->start_period)->format('d M Y') }} - {{ \Carbon\Carbon::parse($exp->end_period)->format('d M Y') }}</p>
+                                    <p>
+                                        {{ \Carbon\Carbon::parse($exp->start_period)->format('M Y') }} -
+                                        {{ \Carbon\Carbon::parse($exp->end_period)->greaterThan(\Carbon\Carbon::now()) ? 'Present' : \Carbon\Carbon::parse($exp->end_period)->format('M Y') }}
+                                    </p>
                                     <div class="h5">{{ $exp->company_name }}</div>
                                 </div>
                             </div>
@@ -248,3 +251,9 @@
         </div>
     </div>
 @endsection
+
+@push('custom_script')
+    <script>
+        @vite([])
+    </script>
+@endpush
