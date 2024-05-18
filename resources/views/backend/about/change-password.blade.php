@@ -33,7 +33,7 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                        <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="{{ isset($about->image) ?  asset('storage/profile/'.$about->image) : '/assets/img/profile-img.jpg' }}" alt="Profile" class="rounded-circle">
                         <h2>{{ Auth::user()->name }}</h2>
                         <h3>{{ isset($about->title) ? $about->title : 'Not filled' }}</h3>
                     </div>

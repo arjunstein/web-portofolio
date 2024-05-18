@@ -10,28 +10,28 @@
                     <div class="container">
                         <div class="content-center">
                             <div class="cc-profile-image">
-                                <a href="#"><img src="/front_assets/images/Juna.jpg" alt="Image" /></a>
+                                <a href="#"><img
+                                        src="{{ isset($about->image) ? asset('storage/profile/' . $about->image) : '/front_assets/images/Juna.jpg' }}"
+                                        alt="Image" /></a>
                             </div>
                             <div class="h2 title">{{ $about->user->name }}</div>
                             <p class="category text-white">{{ $about->title }}</p>
-                            <a class="btn btn-primary smooth-scroll mr-2"
-                                href="{{ $about->linkedin }}" data-aos="zoom-in" target="_blank"
-                                data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary"
-                                href="#"
-                                data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
+                            <a class="btn btn-primary smooth-scroll mr-2" href="{{ $about->linkedin }}" data-aos="zoom-in"
+                                target="_blank" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary"
+                                href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
                         </div>
                     </div>
                     <div class="section">
                         <div class="container">
                             <div class="button-container">
-                                <a class="btn btn-default btn-round btn-lg btn-icon"
-                                    href="{{ $about->facebook }}" target="_blank" rel="tooltip"
-                                    title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a
-                                    class="btn btn-default btn-round btn-lg btn-icon"
+                                <a class="btn btn-default btn-round btn-lg btn-icon" href="{{ $about->facebook }}"
+                                    target="_blank" rel="tooltip" title="Follow me on Facebook"><i
+                                        class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon"
                                     href="{{ $about->instagram }}" target="_blank" rel="tooltip"
                                     title="Follow me on Instagram"><i class="fa fa-instagram"></i></a><a
-                                    class="btn btn-default btn-round btn-lg btn-icon" href="https://wa.me/62{{ $about->whatsapp }}" target="_blank"
-                                    rel="tooltip" title="Chat me on Whatsapp"><i class="fa fa-whatsapp"></i></a>
+                                    class="btn btn-default btn-round btn-lg btn-icon"
+                                    href="https://wa.me/62{{ $about->whatsapp }}" target="_blank" rel="tooltip"
+                                    title="Chat me on Whatsapp"><i class="fa fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-lg-6 col-md-12">
                             <div class="card-body">
-                                <div class="h4 mt-0 title">Basic Information</div>
+                                <div class="h4 mt-0 title">Information</div>
                                 <div class="row mt-3">
                                     <div class="col-sm-4">
                                         <strong class="text-uppercase">Email:</strong>
@@ -94,7 +94,8 @@
                                         <div class="progress">
                                             <div class="progress-bar progress-bar-primary" data-aos="progress-full"
                                                 data-aos-offset="10" data-aos-duration="2000" role="progressbar"
-                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ $skill->percentase }}%">
+                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                                style="width: {{ $skill->percentase }}%">
                                             </div>
                                             <span class="progress-value">{{ $skill->percentase }}%</span>
                                         </div>
@@ -197,7 +198,7 @@
                             <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
                                 data-aos-duration="500">
                                 <div class="card-body cc-experience-header">
-                                    <p>{{ $exp->start_period }} - {{ $exp->end_period }}</p>
+                                    <p>{{ \Carbon\Carbon::parse($exp->start_period)->format('d M Y') }} - {{ \Carbon\Carbon::parse($exp->end_period)->format('d M Y') }}</p>
                                     <div class="h5">{{ $exp->company_name }}</div>
                                 </div>
                             </div>

@@ -52,12 +52,40 @@ class AboutController extends Controller
             if ($request->hasFile('image')) {
                 // Store the image
                 $image = $request->file('image');
-                $imagePath = $image->storeAs('public/images/profile', $image->hashName());
-                // Update the image path in validated data
-                $validatedData['image'] = $imagePath;
+                $image->storeAs('public/profile', $image->hashName());
+                $about = About::findOrFail($id);
+                $about->birthday = $validatedData['birthday'];
+                $about->title = $validatedData['title'];
+                $about->gender = $validatedData['gender'];
+                $about->summary = $validatedData['summary'];
+                $about->phone = $validatedData['phone'];
+                $about->country = $validatedData['country'];
+                $about->address = $validatedData['address'];
+                $about->whatsapp = $validatedData['whatsapp'];
+                $about->linkedin = $validatedData['linkedin'];
+                $about->instagram = $validatedData['instagram'];
+                $about->whatsapp = $validatedData['whatsapp'];
+                $about->twitter = $validatedData['twitter'];
+                $about->facebook = $validatedData['facebook'];
+                $about->image = $image->hashName();
+                $about->update();
+            } else {
+                $about = About::findOrFail($id);
+                $about->birthday = $validatedData['birthday'];
+                $about->title = $validatedData['title'];
+                $about->gender = $validatedData['gender'];
+                $about->summary = $validatedData['summary'];
+                $about->phone = $validatedData['phone'];
+                $about->country = $validatedData['country'];
+                $about->address = $validatedData['address'];
+                $about->whatsapp = $validatedData['whatsapp'];
+                $about->linkedin = $validatedData['linkedin'];
+                $about->instagram = $validatedData['instagram'];
+                $about->whatsapp = $validatedData['whatsapp'];
+                $about->twitter = $validatedData['twitter'];
+                $about->facebook = $validatedData['facebook'];
+                $about->update();
             }
-            $about = About::findOrFail($id);
-            $about->update($validatedData);
 
             return redirect()->route('backend.about.edit', ['id' => $about])->with('success', 'Profile successfully updated');
         } catch (\Throwable $th) {
