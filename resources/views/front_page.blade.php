@@ -1,8 +1,50 @@
 @extends('layouts.master_front')
 
+@push('styles')
+    <style>
+        #myBtn {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Fixed/sticky position */
+            bottom: 20px;
+            /* Place the button at the bottom of the page */
+            right: 25px;
+            /* Place the button 30px from the right */
+            z-index: 99;
+            /* Make sure it does not overlap */
+            border: none;
+            /* Remove borders */
+            outline: none;
+            /* Remove outline */
+            background-color: #378C3F;
+            /* Set a background color */
+            color: white;
+            /* Text color */
+            cursor: pointer;
+            /* Add a mouse pointer on hover */
+            padding: 10px;
+            /* Some padding */
+            border-radius: 50%;
+            /* Rounded corners */
+            font-size: 10px;
+            font-weight: bold;
+            /* Increase font size */
+            height: 40px;
+            width: 40px;
+            margin: 0 auto;
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+            /* Add a dark-grey background on hover */
+        }
+    </style>
+@endpush
+
 @section('content')
     <div>
-        <div class="profile-page">
+        <div class="profile-page" id="toTop">
             <div class="wrapper">
                 <div class="page-header page-header-small" filter-color="green">
                     <div class="page-header-image" data-parallax="true"
@@ -220,7 +262,7 @@
 
             </div>
         </div>
-        <div class="section">
+        <div class="section" id="education">
             <div class="container cc-education">
                 <div class="h4 text-center mb-4 title">Education</div>
                 @foreach ($education as $edu)
@@ -229,7 +271,8 @@
                             <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
                                 data-aos-duration="500">
                                 <div class="card-body cc-education-header">
-                                    <p>{{ $edu->start_year }} - {{ $edu->end_year }}</p>
+                                    <p>{{ $edu->start_year }} -
+                                        {{ $edu->end_year > date('Y') ? 'PRESENT' : $edu->end_year }}</p>
                                     <div class="h5">{{ $edu->title }}</div>
                                 </div>
                             </div>
@@ -249,11 +292,40 @@
                 @endforeach
             </div>
         </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">TOP</button>
     </div>
 @endsection
 
 @push('custom_script')
     <script>
         @vite([])
+    </script>
+    <script>
+        // Get the button:
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction();
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Add event listener to the button to call topFunction on click
+        mybutton.addEventListener('click', topFunction);
     </script>
 @endpush

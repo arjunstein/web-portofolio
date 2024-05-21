@@ -16,4 +16,4 @@
         }
     </style>
 </noscript>
-@vite([])
+@stack('styles')
