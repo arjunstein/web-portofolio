@@ -33,7 +33,8 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                        <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="{{ isset($about->image) ? asset('storage/profile/' . $about->image) : '/assets/img/profile-img.jpg' }}"
+                            alt="Profile" class="rounded-circle">
                         <h2>{{ Auth::user()->name }}</h2>
                         <h3>{{ isset($user->about->title) ? $user->about->title : 'Not filled' }}</h3>
                     </div>
@@ -76,7 +77,8 @@
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
                                             Image</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <img src="/assets/img/profile-img.jpg" alt="Profile">
+                                            <img src="{{ isset($about->image) ? asset('storage/profile/' . $about->image) : '/assets/img/profile-img.jpg' }}"
+                                                alt="Profile">
                                             <div class="pt-2">
                                                 <input type="file" name="image"
                                                     class="form-control @error('image') is-invalid @enderror"

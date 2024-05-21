@@ -21,7 +21,8 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                        <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <img src="{{ isset($about->image) ? asset('storage/profile/' . $about->image) : '/assets/img/profile-img.jpg' }}"
+                            alt="Profile" class="rounded-circle">
                         <h2>{{ Auth::user()->name }}</h2>
                         <h3>{{ isset($user->about->title) ? $user->about->title : 'Not Filled' }}</h3>
                     </div>
@@ -56,7 +57,8 @@
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <h5 class="card-title">Summary</h5>
-                                <p class="small fst-italic">{{ isset($user->about->summary) ? $user->about->summary : 'Not filled' }}
+                                <p class="small fst-italic">
+                                    {{ isset($user->about->summary) ? $user->about->summary : 'Not filled' }}
                                 </p>
                                 <h5 class="card-title">Profile Details</h5>
 
@@ -83,7 +85,8 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Job</div>
-                                    <div class="col-lg-9 col-md-8">{{ isset($user->about->title) ? $user->about->title : 'Not filled' }}
+                                    <div class="col-lg-9 col-md-8">
+                                        {{ isset($user->about->title) ? $user->about->title : 'Not filled' }}
                                     </div>
                                 </div>
 

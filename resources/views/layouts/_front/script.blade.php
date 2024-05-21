@@ -4,3 +4,4 @@
 <script src="/front_assets/js/now-ui-kit.js?ver=1.1.0"></script>
 <script src="/front_assets/js/aos.js?ver=1.1.0"></script>
 <script src="/front_assets/scripts/main.js?ver=1.1.0"></script>
+@stack('custom_script')
