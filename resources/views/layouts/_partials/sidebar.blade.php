@@ -31,13 +31,6 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('backend.education') }}">
-            <i class="bx bxl-react"></i>
-            <span>Portfolio Project</span>
-        </a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('backend.experience') }}">
             <i class="bx bxl-react"></i>
             <span>Experiences</span>
@@ -45,9 +38,23 @@
     </li>
 
     <li class="nav-item">
-    <a class="nav-link collapsed" href="#">
-        <i class="bx bxl-react"></i>
-        <span>Posting</span>
-    </a>
-</li>
+        <a class="nav-link collapsed" href="{{ route('backend.project') }}">
+            <i class="bx bxl-react"></i>
+            <span>Project</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('backend.education') }}">
+            <i class="bx bxl-react"></i>
+            <span>Certificates</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#">
+            <i class="bx bxl-react"></i>
+            <span>Posting</span>
+        </a>
+    </li>
 </ul>
