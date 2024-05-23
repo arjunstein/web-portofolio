@@ -4,7 +4,7 @@
 <head>
     @include('layouts._front.head')
 </head>
-
+@vite([])
 <body id="top">
     <header>
         @include('layouts._front.header')

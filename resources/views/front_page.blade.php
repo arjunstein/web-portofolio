@@ -113,7 +113,7 @@
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-4">
-                                        <strong class="text-uppercase">Language:</strong>
+                                        <strong class="text-uppercase">Country:</strong>
                                     </div>
                                     <div class="col-sm-8">{{ $about->country }}</div>
                                 </div>
@@ -297,9 +297,6 @@
 @endsection
 
 @push('custom_script')
-    <script>
-        @vite([])
-    </script>
     <script>
         // Get the button:
         let mybutton = document.getElementById("myBtn");
