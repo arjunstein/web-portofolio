@@ -6,13 +6,6 @@
 
     <div class="pagetitle">
         <h1>Manage Education</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item">Pages</li>
-                <li class="breadcrumb-item active">Blank</li>
-            </ol>
-        </nav>
     </div><!-- End Page Title -->
     @if ($message = Session::get('success'))
         <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
@@ -32,7 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Your Skills</h5>
-                        <a href="{{ route('backend.education.create') }}" class="btn btn-primary mb-3">Add Education</a>
+                        <a href="{{ route('backend.education.create') }}" class="btn btn-primary mb-3">Your Education</a>
 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">

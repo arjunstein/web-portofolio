@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link smooth-scroll" href="#education">Education</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link smooth-scroll" href="#certificate">Certificate</a>
+                    </li>
                 </ul>
             </div>
         </div>

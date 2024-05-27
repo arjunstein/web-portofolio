@@ -48,7 +48,7 @@ class ProjectController extends Controller
         $projects->description = $request->description;
         $projects->save();
 
-        return redirect('backend.project')->with('success', 'Project added succesfully');
+        return redirect()->route('backend.project')->with('success', 'Project added succesfully');
     }
 
     public function edit($id)

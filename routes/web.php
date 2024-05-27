@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\CertificateController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\EducationController;
 use App\Http\Controllers\Backend\ExperienceController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -63,13 +65,21 @@ Route::prefix('backend')->middleware('auth')->group(function () {
     Route::put('/experience/update/{id}', [ExperienceController::class, 'update'])->name('backend.experience.update');
     Route::delete('/experience/delete/{id}', [ExperienceController::class, 'destroy'])->name('backend.experience.delete');
 
-    // projects
+    // projects route
     Route::get('/project', [ProjectController::class, 'index'])->name('backend.project');
     Route::get('/project/create', [ProjectController::class, 'create'])->name('backend.project.create');
     Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('backend.project.edit');
     Route::post('/project/store', [ProjectController::class, 'store'])->name('backend.project.store');
     Route::put('/project/update/{id}', [ProjectController::class, 'update'])->name('backend.project.update');
     Route::delete('/project/delete/{id}', [ProjectController::class, 'destroy'])->name('backend.project.delete');
+
+    // certificates route
+    Route::get('/certificate', [CertificateController::class, 'index'])->name('backend.certificate');
+    Route::get('/certificate/create', [CertificateController::class, 'create'])->name('backend.certificate.create');
+    Route::post('/certificate/store', [CertificateController::class, 'store'])->name('backend.certificate.store');
+    Route::get('/certificate/edit/{id}', [CertificateController::class, 'edit'])->name('backend.certificate.edit');
+    Route::put('/certificate/update/{id}', [CertificateController::class, 'update'])->name('backend.certificate.update');
+    Route::delete('/certificate/delete/{id}', [CertificateController::class, 'destroy'])->name('backend.certificate.delete');
 });
 
 Auth::routes();
