@@ -45,7 +45,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('backend.education') }}">
+        <a class="nav-link collapsed" href="{{ route('backend.certificate') }}">
             <i class="bx bxl-react"></i>
             <span>Certificates</span>
         </a>

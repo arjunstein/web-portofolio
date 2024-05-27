@@ -12,7 +12,7 @@
         2021 -
         <script>
             document.write(new Date().getFullYear())
-        </script> &copy; Design by -
-        <a class="credit" href="https://templateflip.com" target="_blank">TemplateFlip</a>
+        </script> &copy; Developed by -
+        <a class="credit" href="#">Arjunstein</a>
     </p>
 </div>

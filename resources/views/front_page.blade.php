@@ -57,7 +57,7 @@
                                         alt="Image" /></a>
                             </div>
                             <div class="h2 title">{{ $about->user->name }}</div>
-                            <p class="category text-white">{{ $about->title }}</p>
+                            <p class="category text-white"><i>{{ $about->title }}</i></p>
                             <a class="btn btn-primary smooth-scroll mr-2" href="{{ $about->linkedin }}" data-aos="zoom-in"
                                 target="_blank" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary"
                                 href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
@@ -153,77 +153,34 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto">
-                        <div class="h4 text-center mb-4 title">Portfolio</div>
-                        <div class="nav-align-center">
-                            <ul class="nav nav-pills nav-pills-primary" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#web-development"
-                                        role="tablist"><i class="fa fa-laptop" aria-hidden="true"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+                        <div class="h4 text-center title">Portfolio</div>
                     </div>
                 </div>
-                <div class="tab-content gallery mt-5">
+                <div class="tab-content gallery mt-3">
                     <div class="tab-pane active" id="web-development">
                         <div class="ml-auto mr-auto">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="cc-porfolio-image img-raised" data-aos="fade-up"
-                                        data-aos-anchor-placement="top-bottom">
-                                        <a href="#web-development">
-                                            <figure class="cc-effect">
-                                                <img src="/front_assets/images/project-1.jpg" alt="Image" />
-                                                <figcaption>
-                                                    <div class="h4">Sistem Peminjaman Alat Kerja</div>
-                                                    <p>Web Development</p>
-                                                </figcaption>
-                                            </figure>
-                                        </a>
+                                @forelse ($projects as $project)
+                                    <div class="col-md-6">
+                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up"
+                                            data-aos-anchor-placement="top-bottom">
+                                            <a href="#web-development">
+                                                <figure class="cc-effect">
+                                                    <img src="{{ asset('storage/project/' . $project->image) }}"
+                                                        alt="Image" />
+                                                    <figcaption>
+                                                        <div class="h4">{{ $project->project_title }}</div>
+                                                        <p>{{ $project->based }}</p>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="cc-porfolio-image img-raised" data-aos="fade-up"
-                                        data-aos-anchor-placement="top-bottom">
-                                        <a href="#web-development">
-                                            <figure class="cc-effect">
-                                                <img src="/front_assets/images/project-4.jpg" alt="Image" />
-                                                <figcaption>
-                                                    <div class="h4">Sistem e-voting</div>
-                                                    <p>Web Development</p>
-                                                </figcaption>
-                                            </figure>
-                                        </a>
+                                @empty
+                                    <div class="col-md-6">
+                                        <p>Empty</p>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="cc-porfolio-image img-raised" data-aos="fade-up"
-                                        data-aos-anchor-placement="top-bottom">
-                                        <a href="#web-development">
-                                            <figure class="cc-effect">
-                                                <img src="/front_assets/images/project-2.jpg" alt="Image" />
-                                                <figcaption>
-                                                    <div class="h4">Sistem Inventory Gudang</div>
-                                                    <p>Web Development</p>
-                                                </figcaption>
-                                            </figure>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="cc-porfolio-image img-raised" data-aos="fade-up"
-                                        data-aos-anchor-placement="top-bottom">
-                                        <a href="#web-development">
-                                            <figure class="cc-effect">
-                                                <img src="/front_assets/images/project-3.jpg" alt="Image" />
-                                                <figcaption>
-                                                    <div class="h4">Ecommerce Jerziku</div>
-                                                    <p>Web Development</p>
-                                                </figcaption>
-                                            </figure>
-                                        </a>
-                                    </div>
-                                </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -290,6 +247,44 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+        </div>
+        <div class="section" id="certificate">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="h4 text-center title">Certificates</div>
+                    </div>
+                </div>
+                <div class="tab-content gallery mt-3">
+                    <div class="tab-pane active" id="certificate">
+                        <div class="ml-auto mr-auto">
+                            <div class="row">
+                                @forelse ($certificates as $certificate)
+                                    <div class="col-md-6">
+                                        <div class="cc-porfolio-image img-raised" data-aos="fade-up"
+                                            data-aos-anchor-placement="top-bottom">
+                                            <a href="#certificate">
+                                                <figure class="cc-effect">
+                                                    <img src="{{ asset('storage/certificates/' . $certificate->image) }}"
+                                                        alt="Image" />
+                                                    <figcaption>
+                                                        <div class="h4">{{ $certificate->certificate_title }}</div>
+                                                        <p>{{ $certificate->publisher }}</p>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @empty
+                                    <div class="col-md-12 text-center">
+                                        <p>Empty Certificate</p>
+                                    </div>
+                                @endforelse
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <button onclick="topFunction()" id="myBtn" title="Go to top">TOP</button>

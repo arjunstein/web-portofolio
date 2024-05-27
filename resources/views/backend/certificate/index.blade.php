@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'Manage experience')
+@section('title', 'Manage certificate')
 
 @section('content')
     <div class="pagetitle">
-        <h1>Manage experience</h1>
+        <h1>Manage certificate</h1>
     </div><!-- End Page Title -->
     @if ($message = Session::get('success'))
         <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
@@ -23,37 +23,40 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Your Experiences</h5>
-                        <a href="{{ route('backend.experience.create') }}" class="btn btn-primary mb-3">Your Experience</a>
+                        <h5 class="card-title">Your certificate</h5>
+                        <a href="{{ route('backend.certificate.create') }}" class="btn btn-primary mb-3">Add certificate</a>
 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Company Name</th>
-                                    <th>Title</th>
-                                    <th>Start Period</th>
-                                    <th>End Period</th>
-                                    <th>Last Salary</th>
+                                    <th>Image</th>
+                                    <th>Certificate Title</th>
+                                    <th>Publish Date</th>
+                                    <th>Publisher</th>
+                                    <th>Expired</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($experience as $e => $exp)
+                                @foreach ($certificates as $e => $certificate)
                                     <tr>
                                         <td>{{ $e + 1 }}</td>
-                                        <td>{{ $exp->company_name }}</td>
-                                        <td>{{ $exp->title }}</td>
-                                        <td>{{ $exp->start_period }}</td>
-                                        <td>{{ $exp->end_period }}</td>
-                                        <td>Rp. {{ number_format($exp->last_salary) }}</td>
+                                        <td><img src="{{ asset('storage/certificates/' . $certificate->image) }}"
+                                                alt="{{ $certificate->certificate_title }}" width="80px"></td>
+                                        <td>{{ $certificate->certificate_title }}</td>
+                                        <td>{{ $certificate->publish_date }}</td>
+                                        <td>{{ $certificate->publisher }}</td>
+                                        <td>{{ $certificate->expired }}</td>
+
                                         <td>
-                                            <form action="{{ route('backend.experience.delete', ['id' => $exp]) }}"
+                                            <form
+                                                action="{{ route('backend.certificate.delete', ['id' => $certificate]) }}"
                                                 method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{ route('backend.experience.edit', ['id' => $exp]) }}"
+                                                <a href="{{ route('backend.certificate.edit', ['id' => $certificate]) }}"
                                                     class="btn btn-success btn-sm"><i class="bi bi-pencil-square"></i></a>
                                                 <button type="submit"
                                                     onclick="return confirm('Are you sure to delete this data?')"

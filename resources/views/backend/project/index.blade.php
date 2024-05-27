@@ -5,13 +5,6 @@
 @section('content')
     <div class="pagetitle">
         <h1>Manage project</h1>
-        <nav>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item">Pages</li>
-                <li class="breadcrumb-item active">Blank</li>
-            </ol>
-        </nav>
     </div><!-- End Page Title -->
     @if ($message = Session::get('success'))
         <div class="alert alert-success bg-success text-light border-0 alert-dismissible fade show" role="alert">
@@ -31,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Your Project</h5>
-                        <a href="{{ route('backend.project.create') }}" class="btn btn-primary mb-3">Add Project</a>
+                        <a href="{{ route('backend.project.create') }}" class="btn btn-primary mb-3">Your Project</a>
 
                         <!-- Table with stripped rows -->
                         <table class="table datatable">

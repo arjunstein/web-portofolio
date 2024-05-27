@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'Add Project')
+@section('title', 'Add Certificate')
 
 @section('content')
     <div class="pagetitle">
-        <h1>Add Project</h1>
+        <h1>Add Certificate</h1>
     </div><!-- End Page Title -->
     <section class="section">
         <div class="row justify-content-center">
@@ -18,8 +18,8 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Add Project</h5>
-                        <form class="row g-3" action="{{ route('backend.project.store') }}" method="POST" enctype="multipart/form-data">
+                        <h5 class="card-title">Add Certificate</h5>
+                        <form class="row g-3" action="{{ route('backend.certificate.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-6">
                                 <label class="form-label">Image</label>
@@ -32,62 +32,50 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">Project Title</label>
-                                <input type="text" name="project_title"
-                                    class="form-control @error('project_title') is-invalid @enderror"
-                                    value="{{ old('project_title') }}">
-                                @error('project_title')
+                                <label class="form-label">Certificate Title</label>
+                                <input type="text" name="certificate_title"
+                                    class="form-control @error('certificate_title') is-invalid @enderror"
+                                    value="{{ old('certificate_title') }}">
+                                @error('certificate_title')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">Based</label>
-                                <input type="text" name="based"
-                                    class="form-control @error('based') is-invalid @enderror" value="{{ old('based') }}"
-                                    autocomplete="yes">
-                                @error('based')
+                                <label class="form-label">Publish Date</label>
+                                <input type="date" name="publish_date"
+                                    class="form-control @error('publish_date') is-invalid @enderror" value="{{ old('publish_date') }}">
+                                @error('publish_date')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">Start Project</label>
-                                <input type="date" name="start_project" value="{{ old('start_project') }}"
-                                    class="form-control @error('start_project') is-invalid @enderror">
-                                @error('start_project')
+                                <label class="form-label">Publisher</label>
+                                <input type="text" name="publisher" value="{{ old('publisher') }}"
+                                    class="form-control @error('publisher') is-invalid @enderror">
+                                @error('publisher')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">Stack used</label>
-                                <textarea type="text" name="stack" rows="3" class="form-control @error('stack') is-invalid @enderror">{{ old('stack') }}</textarea>
-                                @error('stack')
+                                <label class="form-label">Expired</label>
+                                <input type="date" name="expired" rows="3" class="form-control @error('expired') is-invalid @enderror" value="{{ old('expired') }}">
+                                @error('expired')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">End Project</label>
-                                <input type="date" name="end_project"
-                                    class="form-control @error('end_project') is-invalid @enderror"
-                                    value="{{ old('end_project') }}">
-                                @error('end_project')
-                                    <span class="invalid-feedback" role="alert">
-                                        <p>{{ $message }}</p>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Description</label>
-                                <textarea type="text" name="description" rows="5"
-                                    class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
-                                @error('description')
+                                <label class="form-label">Certificate Description</label>
+                                <textarea type="text" name="certificate_description" rows="5"
+                                    class="form-control @error('certificate_description') is-invalid @enderror">{{ old('certificate_description') }}</textarea>
+                                @error('certificate_description')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>
@@ -95,7 +83,7 @@
                             </div>
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="{{ route('backend.project') }}" class="btn btn-secondary">Back</a>
+                                <a href="{{ route('backend.certificate') }}" class="btn btn-secondary">Back</a>
                             </div>
                         </form><!-- End Multi Columns Form -->
                     </div>
