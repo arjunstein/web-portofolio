@@ -129,7 +129,7 @@
                 <div class="card" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                     <div class="card-body">
                         <div class="row">
-                            @foreach ($skills as $skill)
+                            @forelse ($skills as $skill)
                                 <div class="col-md-6">
                                     <div class="progress-container progress-primary">
                                         <span class="progress-badge">{{ $skill->skillName }}</span>
@@ -143,7 +143,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <div class="col-md-12 text-center">
+                                    <b>Empty Skill</b>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -177,8 +181,8 @@
                                         </div>
                                     </div>
                                 @empty
-                                    <div class="col-md-6">
-                                        <p>Empty</p>
+                                    <div class="col-md-12 text-center">
+                                        <b>Empty Project</b>
                                     </div>
                                 @endforelse
                             </div>
@@ -191,7 +195,7 @@
             <div class="container cc-experience">
                 <div class="h4 text-center mb-4 title">Work Experience</div>
 
-                @foreach ($experience as $exp)
+                @forelse ($experience as $exp)
                     <div class="card">
                         <div class="row">
                             <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
@@ -215,14 +219,18 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-md-12 text-center">
+                        <b>Empty Experience</b>
+                    </div>
+                @endforelse
 
             </div>
         </div>
         <div class="section" id="education">
             <div class="container cc-education">
                 <div class="h4 text-center mb-4 title">Education</div>
-                @foreach ($education as $edu)
+                @forelse ($education as $edu)
                     <div class="card">
                         <div class="row">
                             <div class="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset="50"
@@ -246,7 +254,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-md-12 text-center">
+                        <b>Empty Education</b>
+                    </div>
+                @endforelse
             </div>
         </div>
         <div class="section" id="certificate">
@@ -264,13 +276,16 @@
                                     <div class="col-md-6">
                                         <div class="cc-porfolio-image img-raised" data-aos="fade-up"
                                             data-aos-anchor-placement="top-bottom">
-                                            <a href="#certificate">
+                                            <a href="{{ url('/storage/certificates/' . $certificate->image) }}"
+                                                target="_blank">
                                                 <figure class="cc-effect">
                                                     <img src="{{ asset('storage/certificates/' . $certificate->image) }}"
                                                         alt="Image" />
                                                     <figcaption>
                                                         <div class="h4">{{ $certificate->certificate_title }}</div>
                                                         <p>{{ $certificate->publisher }}</p>
+                                                        <p style="text-transform: capitalize;">
+                                                            {{ $certificate->certificate_description }}</p>
                                                     </figcaption>
                                                 </figure>
                                             </a>
@@ -278,7 +293,7 @@
                                     </div>
                                 @empty
                                     <div class="col-md-12 text-center">
-                                        <p>Empty Certificate</p>
+                                        <b>Empty Certificate</b>
                                     </div>
                                 @endforelse
                             </div>

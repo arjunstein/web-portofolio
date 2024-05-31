@@ -6,7 +6,6 @@
     <a class="cc-whatsapp btn btn-link" href="https://wa.me/62{{ $about->whatsapp }}" target="_blank"><i class="fa fa-whatsapp fa-2x"
             aria-hidden="true"></i></a>
 </div>
-<div class="h4 title text-center">{{ $user->name }}</div>
 <div class="text-center text-muted">
     <p>
         2021 -
