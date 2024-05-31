@@ -11,6 +11,7 @@ use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
@@ -19,10 +20,10 @@ class FrontController extends Controller
         $user = User::latest('id')->first();
         $about = About::latest('id')->first();
         $experience = Experience::orderBy('end_period', 'desc')->get();
-        $skills = Skill::orderBy('percentase', 'asc')->get();
+        $skills = Skill::orderBy('percentase', 'desc')->get();
         $education = Education::orderBy('start_year', 'desc')->get();
         $projects = Project::orderBy('start_project', 'desc')->get();
-        $certificates = Certificate::orderBy('publish_date', 'desc')->get();
+        $certificates = Certificate::latest()->get();
 
         return view('front_page', compact('about', 'experience', 'education', 'skills', 'user', 'projects', 'certificates'));
     }
