@@ -26,7 +26,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required|mimes:png,jpg,jpeg|max:300',
+            'images.*' => 'required|mimes:png,jpg,jpeg|max:3000',
             'project_title' => 'required|string|max:100',
             'based' => 'required|string|max:100',
             'stack' => 'required|string|max:100',
@@ -35,11 +35,17 @@ class ProjectController extends Controller
             'description' => 'required|string|max:255',
         ]);
 
-        $image = $request->file('image');
-        $image->storeAs('public/project', $image->hashName());
+        $imagePaths = [];
+
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $image->storeAs('public/project', $image->hashName());
+                $imagePaths[] = $image->hashName();
+            }
+        }
 
         $projects = new Project;
-        $projects->image = $image->hashName();
+        $projects->image = json_encode($imagePaths); // Assuming you store images as JSON
         $projects->project_title = $request->project_title;
         $projects->based = $request->based;
         $projects->stack = $request->stack;
@@ -48,8 +54,9 @@ class ProjectController extends Controller
         $projects->description = $request->description;
         $projects->save();
 
-        return redirect()->route('backend.project')->with('success', 'Project added succesfully');
+        return redirect()->route('backend.project')->with('success', 'Project added successfully');
     }
+
 
     public function edit($id)
     {

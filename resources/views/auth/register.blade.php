@@ -69,7 +69,7 @@
                                     <form class="row g-3" method="post" action="{{ route('register') }}">
                                         @csrf
                                         <div class="col-12">
-                                            <label class="form-label">Your Name</label>
+                                            <label class="form-label">Full Name</label>
                                             <input type="text" name="name" value="{{ old('name') }}"
                                                 class="form-control @error('name') is-invalid @enderror">
                                             @error('name')
@@ -78,7 +78,7 @@
                                         </div>
 
                                         <div class="col-12">
-                                            <label class="form-label">Your Email</label>
+                                            <label class="form-label">Email</label>
                                             <input type="email" name="email" value="{{ old('email') }}"
                                                 class="form-control @error('email') is-invalid @enderror">
                                             @error('email')

@@ -49,57 +49,42 @@ class AboutController extends Controller
         ]);
 
         try {
-            // Check if image is uploaded
-            if ($request->hasFile('image')) {
-                // Store the image
-                $image = $request->file('image');
-                $image->storeAs('public/profile', $image->hashName());
-                $about = About::findOrFail($id);
+            $about = About::findOrFail($id);
 
-                //delete old image
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imgName = 'pp_' . date('dmYHis') . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('public/profile', $imgName);
+
                 $path = storage_path('app/public/profile/' . $about->image);
                 if (File::exists($path)) {
                     File::delete($path);
                 }
 
-                $about->birthday = $validatedData['birthday'];
-                $about->title = $validatedData['title'];
-                $about->gender = $validatedData['gender'];
-                $about->summary = $validatedData['summary'];
-                $about->phone = $validatedData['phone'];
-                $about->country = $validatedData['country'];
-                $about->address = $validatedData['address'];
-                $about->whatsapp = $validatedData['whatsapp'];
-                $about->linkedin = $validatedData['linkedin'];
-                $about->instagram = $validatedData['instagram'];
-                $about->whatsapp = $validatedData['whatsapp'];
-                $about->twitter = $validatedData['twitter'];
-                $about->facebook = $validatedData['facebook'];
-                $about->image = $image->hashName();
-                $about->update();
-            } else {
-                $about = About::findOrFail($id);
-                $about->birthday = $validatedData['birthday'];
-                $about->title = $validatedData['title'];
-                $about->gender = $validatedData['gender'];
-                $about->summary = $validatedData['summary'];
-                $about->phone = $validatedData['phone'];
-                $about->country = $validatedData['country'];
-                $about->address = $validatedData['address'];
-                $about->whatsapp = $validatedData['whatsapp'];
-                $about->linkedin = $validatedData['linkedin'];
-                $about->instagram = $validatedData['instagram'];
-                $about->whatsapp = $validatedData['whatsapp'];
-                $about->twitter = $validatedData['twitter'];
-                $about->facebook = $validatedData['facebook'];
-                $about->update();
+                $about->image = $imgName;
             }
+
+            $about->birthday = $validatedData['birthday'] ?? $about->birthday;
+            $about->title = $validatedData['title'] ?? $about->title;
+            $about->gender = $validatedData['gender'] ?? $about->gender;
+            $about->summary = $validatedData['summary'] ?? $about->summary;
+            $about->phone = $validatedData['phone'] ?? $about->phone;
+            $about->country = $validatedData['country'] ?? $about->country;
+            $about->address = $validatedData['address'] ?? $about->address;
+            $about->whatsapp = $validatedData['whatsapp'] ?? $about->whatsapp;
+            $about->linkedin = $validatedData['linkedin'] ?? $about->linkedin;
+            $about->instagram = $validatedData['instagram'] ?? $about->instagram;
+            $about->twitter = $validatedData['twitter'] ?? $about->twitter;
+            $about->facebook = $validatedData['facebook'] ?? $about->facebook;
+
+            $about->update();
 
             return redirect()->route('backend.about.edit', ['id' => $about])->with('success', 'Profile successfully updated');
         } catch (\Throwable $th) {
-            return redirect()->back()->with('error', 'Profile was failed update');
+            return redirect()->back()->with('error', 'Profile was failed update ' . $th->getMessage());
         }
     }
+
 
     public function changePassword($id)
     {

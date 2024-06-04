@@ -1,7 +1,7 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CV {{ $user->name }}</title>
+<title>Welcome to my site | {{ isset($user->name) ? $user->name : 'Guest' }}</title>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
 <link href="/front_assets/css/aos.css?ver=1.1.0" rel="stylesheet" />

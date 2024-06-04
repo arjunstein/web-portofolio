@@ -23,9 +23,9 @@
                             @csrf
                             <div class="col-md-6">
                                 <label class="form-label">Image</label>
-                                <input type="file" name="image"
-                                    class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}">
-                                @error('image')
+                                <input type="file" name="images[]" multiple
+                                    class="form-control @error('images') is-invalid @enderror" value="{{ old('images') }}">
+                                @error('images')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>
