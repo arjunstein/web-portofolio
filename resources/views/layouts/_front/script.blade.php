@@ -2,6 +2,7 @@
 <script src="/front_assets/js/core/popper.min.js?ver=1.1.0"></script>
 <script src="/front_assets/js/core/bootstrap.min.js?ver=1.1.0"></script>
 <script src="/front_assets/js/now-ui-kit.js?ver=1.1.0"></script>
-<script src="/front_assets/js/aos.js?ver=1.1.0"></script>
+{{-- <script src="/front_assets/js/aos.js?ver=1.1.0"></script> --}}
 <script src="/front_assets/scripts/main.js?ver=1.1.0"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 @stack('custom_script')

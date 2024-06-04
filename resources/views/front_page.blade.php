@@ -53,12 +53,12 @@
                         <div class="content-center">
                             <div class="cc-profile-image">
                                 <a href="#"><img
-                                        src="{{ isset($about->image) ? asset('storage/profile/' . $about->image) : '/front_assets/images/Juna.jpg' }}"
+                                        src="{{ isset($about->image) ? asset('storage/profile/' . $about->image) : '/assets/img/profile-img.jpg' }}"
                                         alt="Image" /></a>
                             </div>
-                            <div class="h2 title">{{ $about->user->name }}</div>
-                            <p class="category text-white"><i>{{ $about->title }}</i></p>
-                            <a class="btn btn-primary smooth-scroll mr-2" href="{{ $about->linkedin }}" data-aos="zoom-in"
+                            <div class="h2 title">{{ isset($about->user->name) ? $about->user->name : 'John Doe' }}</div>
+                            <p class="category text-white"><i>{{ isset($about->title) ? $about->title : '' }}</i></p>
+                            <a class="btn btn-primary smooth-scroll mr-2" href="{{ isset($about->linkedin) ? $about->linkedin : '#' }}" data-aos="zoom-in"
                                 target="_blank" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary"
                                 href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
                         </div>
@@ -66,13 +66,13 @@
                     <div class="section">
                         <div class="container">
                             <div class="button-container">
-                                <a class="btn btn-default btn-round btn-lg btn-icon" href="{{ $about->facebook }}"
+                                <a class="btn btn-default btn-round btn-lg btn-icon" href="{{ isset($about->facebook) ? $about->facebook : '#' }}"
                                     target="_blank" rel="tooltip" title="Follow me on Facebook"><i
                                         class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon"
-                                    href="{{ $about->instagram }}" target="_blank" rel="tooltip"
+                                    href="{{ isset($about->instagram) ? $about->instagram : '#' }}" target="_blank" rel="tooltip"
                                     title="Follow me on Instagram"><i class="fa fa-instagram"></i></a><a
                                     class="btn btn-default btn-round btn-lg btn-icon"
-                                    href="https://wa.me/62{{ $about->whatsapp }}" target="_blank" rel="tooltip"
+                                    href="https://wa.me/62{{ isset($about->whatsapp) ? $about->whatsapp : '#' }}" target="_blank" rel="tooltip"
                                     title="Chat me on Whatsapp"><i class="fa fa-whatsapp"></i></a>
                             </div>
                         </div>
@@ -87,7 +87,8 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="card-body">
                                 <div class="h4 mt-0 title">About</div>
-                                <p>{{ $about->summary }}</p>
+                                <p style="text-align: justify;">
+                                    {{ isset($about->summary) ? $about->summary : 'Empty about' }}</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12">
@@ -97,25 +98,29 @@
                                     <div class="col-sm-4">
                                         <strong class="text-uppercase">Email:</strong>
                                     </div>
-                                    <div class="col-sm-8">{{ $about->user->email }}</div>
+                                    <div class="col-sm-8">
+                                        {{ isset($about->user->email) ? $about->user->email : 'Empty email' }}</div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-4">
                                         <strong class="text-uppercase">Phone:</strong>
                                     </div>
-                                    <div class="col-sm-8">0{{ $about->phone }}</div>
+                                    <div class="col-sm-8">+62{{ isset($about->phone) ? $about->phone : 'Empty phone' }}
+                                    </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-4">
                                         <strong class="text-uppercase">Address:</strong>
                                     </div>
-                                    <div class="col-sm-8">{{ $about->address }}</div>
+                                    <div class="col-sm-8">{{ isset($about->address) ? $about->address : 'Empty address' }}
+                                    </div>
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-sm-4">
                                         <strong class="text-uppercase">Country:</strong>
                                     </div>
-                                    <div class="col-sm-8">{{ $about->country }}</div>
+                                    <div class="col-sm-8">{{ isset($about->country) ? $about->country : 'Empty country' }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -165,12 +170,15 @@
                         <div class="ml-auto mr-auto">
                             <div class="row">
                                 @forelse ($projects as $project)
+                                    @php
+                                        $image = json_decode($project->image);
+                                    @endphp
                                     <div class="col-md-6">
                                         <div class="cc-porfolio-image img-raised" data-aos="fade-up"
                                             data-aos-anchor-placement="top-bottom">
-                                            <a href="#web-development">
+                                            <a href="#" data-toggle="modal" data-target="#{{ $project->id }}">
                                                 <figure class="cc-effect">
-                                                    <img src="{{ asset('storage/project/' . $project->image) }}"
+                                                    <img src="{{ asset('storage/project/' . $image[0]) }}"
                                                         alt="Image" />
                                                     <figcaption>
                                                         <div class="h4">{{ $project->project_title }}</div>
@@ -178,6 +186,54 @@
                                                     </figcaption>
                                                 </figure>
                                             </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="{{ $project->id }}" tabindex="-1"
+                                        aria-labelledby="{{ $project->id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="{{ $project->id }}">
+                                                        {{ $project->project_title }}</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div id="carouselExampleControls" class="carousel slide"
+                                                        data-ride="carousel">
+                                                        <div class="carousel-inner">
+                                                            @foreach ($image as $e => $img)
+                                                                <div class="carousel-item {{ $e == 0 ? 'active' : '' }}">
+                                                                    <img src="{{ asset('storage/project/' . $img) }}"
+                                                                        height="auto" width="400px"
+                                                                        class="d-block w-100"
+                                                                        alt="{{ $project->project_title }}">
+                                                                </div>
+                                                            @endforeach
+                                                        </div>
+                                                        <button class="carousel-control-prev" type="button"
+                                                            data-target="#carouselExampleControls" data-slide="prev">
+                                                            <span class="carousel-control-prev-icon"
+                                                                aria-hidden="true"></span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </button>
+                                                        <button class="carousel-control-next" type="button"
+                                                            data-target="#carouselExampleControls" data-slide="next">
+                                                            <span class="carousel-control-next-icon"
+                                                                aria-hidden="true"></span>
+                                                            <span class="sr-only">Next</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @empty

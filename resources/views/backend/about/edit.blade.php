@@ -141,7 +141,7 @@
                                             <select name="gender"
                                                 class="form-select @error('gender') is-invalid @enderror" id="gender"
                                                 aria-label="Default select example">
-                                                <option {{ $user->about->gender == null ? 'selected disabled' : '' }}>
+                                                <option {{ $user->about->gender == null ? 'selected disabled' : 'disabled' }}>
                                                     ---Select gender---</option>
                                                 <option value="male"
                                                     {{ $user->about->gender == 'male' ? 'selected' : '' }}>
