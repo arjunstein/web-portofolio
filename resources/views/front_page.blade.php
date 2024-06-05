@@ -58,22 +58,25 @@
                             </div>
                             <div class="h2 title">{{ isset($about->user->name) ? $about->user->name : 'John Doe' }}</div>
                             <p class="category text-white"><i>{{ isset($about->title) ? $about->title : '' }}</i></p>
-                            <a class="btn btn-primary smooth-scroll mr-2" href="{{ isset($about->linkedin) ? $about->linkedin : '#' }}" data-aos="zoom-in"
+                            <a class="btn btn-primary smooth-scroll mr-2"
+                                href="{{ isset($about->linkedin) ? $about->linkedin : '#' }}" data-aos="zoom-in"
                                 target="_blank" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary"
-                                href="#" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
+                                href="{{ isset($about->gdrive_link) ? $about->gdrive_link : '#' }}" target="_blank" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
                         </div>
                     </div>
                     <div class="section">
                         <div class="container">
                             <div class="button-container">
-                                <a class="btn btn-default btn-round btn-lg btn-icon" href="{{ isset($about->facebook) ? $about->facebook : '#' }}"
-                                    target="_blank" rel="tooltip" title="Follow me on Facebook"><i
-                                        class="fa fa-facebook"></i></a><a class="btn btn-default btn-round btn-lg btn-icon"
-                                    href="{{ isset($about->instagram) ? $about->instagram : '#' }}" target="_blank" rel="tooltip"
-                                    title="Follow me on Instagram"><i class="fa fa-instagram"></i></a><a
+                                <a class="btn btn-default btn-round btn-lg btn-icon"
+                                    href="{{ isset($about->facebook) ? $about->facebook : '#' }}" target="_blank"
+                                    rel="tooltip" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a
                                     class="btn btn-default btn-round btn-lg btn-icon"
-                                    href="https://wa.me/62{{ isset($about->whatsapp) ? $about->whatsapp : '#' }}" target="_blank" rel="tooltip"
-                                    title="Chat me on Whatsapp"><i class="fa fa-whatsapp"></i></a>
+                                    href="{{ isset($about->instagram) ? $about->instagram : '#' }}" target="_blank"
+                                    rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a><a
+                                    class="btn btn-default btn-round btn-lg btn-icon"
+                                    href="https://wa.me/62{{ isset($about->whatsapp) ? $about->whatsapp : '#' }}"
+                                    target="_blank" rel="tooltip" title="Chat me on Whatsapp"><i
+                                        class="fa fa-whatsapp"></i></a>
                             </div>
                         </div>
                     </div>
@@ -203,31 +206,20 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div id="carouselExampleControls" class="carousel slide"
-                                                        data-ride="carousel">
-                                                        <div class="carousel-inner">
-                                                            @foreach ($image as $e => $img)
-                                                                <div class="carousel-item {{ $e == 0 ? 'active' : '' }}">
-                                                                    <img src="{{ asset('storage/project/' . $img) }}"
-                                                                        height="auto" width="400px"
-                                                                        class="d-block w-100"
-                                                                        alt="{{ $project->project_title }}">
-                                                                </div>
-                                                            @endforeach
-                                                        </div>
-                                                        <button class="carousel-control-prev" type="button"
-                                                            data-target="#carouselExampleControls" data-slide="prev">
-                                                            <span class="carousel-control-prev-icon"
-                                                                aria-hidden="true"></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </button>
-                                                        <button class="carousel-control-next" type="button"
-                                                            data-target="#carouselExampleControls" data-slide="next">
-                                                            <span class="carousel-control-next-icon"
-                                                                aria-hidden="true"></span>
-                                                            <span class="sr-only">Next</span>
-                                                        </button>
+                                                    <div class="card-body">
+                                                        <li>
+                                                            Stack used: {{ $project->stack }}
+                                                        </li>
+                                                        <li>
+                                                            Description: {{ $project->description }}
+                                                        </li>
                                                     </div>
+                                                    @foreach ($image as $img)
+                                                        <div class="card" style="width: 18rem;">
+                                                            <img src="{{ asset('storage/project/' . $img) }}"
+                                                                class="card-img-top" alt="{{ $project->project_title }}">
+                                                        </div>
+                                                    @endforeach
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-danger"
@@ -267,9 +259,8 @@
                             <div class="col-md-9" data-aos="fade-left" data-aos-offset="50" data-aos-duration="500">
                                 <div class="card-body">
                                     <div class="h5">{{ $exp->title }}</div>
-                                    <h6>Project: .....</h6>
                                     <ul>
-                                        {{ $exp->jobdesc }}
+                                        <li>{{ $exp->jobdesc }}</li>
                                     </ul>
                                 </div>
                             </div>

@@ -141,7 +141,8 @@
                                             <select name="gender"
                                                 class="form-select @error('gender') is-invalid @enderror" id="gender"
                                                 aria-label="Default select example">
-                                                <option {{ $user->about->gender == null ? 'selected disabled' : 'disabled' }}>
+                                                <option
+                                                    {{ $user->about->gender == null ? 'selected disabled' : 'disabled' }}>
                                                     ---Select gender---</option>
                                                 <option value="male"
                                                     {{ $user->about->gender == 'male' ? 'selected' : '' }}>
@@ -280,6 +281,21 @@
                                                 class="form-control @error('linkedin') is-invalid @enderror"
                                                 id="linkedin" value="{{ $user->about->linkedin }}">
                                             @error('linkedin')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <p>{{ $message }}</p>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="gdrive_link" class="col-md-4 col-lg-3 col-form-label">Gdrive
+                                            Link</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="gdrive_link" type="text"
+                                                class="form-control @error('gdrive_link') is-invalid @enderror"
+                                                id="gdrive_link" value="{{ $user->about->gdrive_link }}">
+                                            @error('gdrive_link')
                                                 <span class="invalid-feedback" role="alert">
                                                     <p>{{ $message }}</p>
                                                 </span>
