@@ -46,6 +46,7 @@ class AboutController extends Controller
             'twitter' => 'nullable|url',
             'facebook' => 'nullable|url',
             'image' => 'nullable|mimes:jpeg,jpg,png|max:512',
+            'gdrive_link' => 'nullable|url',
         ]);
 
         try {
@@ -76,6 +77,7 @@ class AboutController extends Controller
             $about->instagram = $validatedData['instagram'] ?? $about->instagram;
             $about->twitter = $validatedData['twitter'] ?? $about->twitter;
             $about->facebook = $validatedData['facebook'] ?? $about->facebook;
+            $about->gdrive_link = $validatedData['gdrive_link'] ?? $about->gdrive_link;
 
             $about->update();
 
