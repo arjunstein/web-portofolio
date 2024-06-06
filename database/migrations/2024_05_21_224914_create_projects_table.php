@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->id();
             $table->string('image');
             $table->string('project_title');
             $table->string('based');
