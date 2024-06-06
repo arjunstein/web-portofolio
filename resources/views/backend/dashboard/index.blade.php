@@ -32,6 +32,8 @@
                                 <canvas id="barChart" style="max-height: 400px;"></canvas>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", () => {
+                                        const monthlyCounts = @json($monthlyCounts); // Mengambil data dari variabel PHP ke JavaScript
+
                                         new Chart(document.querySelector('#barChart'), {
                                             type: 'bar',
                                             data: {
@@ -40,7 +42,7 @@
                                                 ],
                                                 datasets: [{
                                                     label: 'Visitor',
-                                                    data: [65, 59, 80, 81, 56, 55, 40, 62, 75, 90, 83, 69],
+                                                    data: monthlyCounts,
                                                     backgroundColor: [
                                                         'rgba(255, 99, 132, 0.2)',
                                                         'rgba(255, 159, 64, 0.2)',
@@ -153,7 +155,7 @@
                                                             ],
                                                             datasets: [{
                                                                 label: 'Clicked',
-                                                                data: [300, 50, 100,12,31,45],
+                                                                data: [300, 50, 100, 12, 31, 45],
                                                                 backgroundColor: [
                                                                     'rgb(255, 99, 132)',
                                                                     'rgb(54, 162, 235)',
