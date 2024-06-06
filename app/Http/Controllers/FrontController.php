@@ -9,13 +9,14 @@ use App\Models\Experience;
 use App\Models\Project;
 use App\Models\Skill;
 use App\Models\User;
+use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class FrontController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = User::latest('id')->first();
         $about = About::latest('id')->first();
@@ -24,7 +25,10 @@ class FrontController extends Controller
         $education = Education::orderBy('start_year', 'desc')->get();
         $projects = Project::orderBy('start_project', 'desc')->get();
         $certificates = Certificate::latest()->get();
+        $visitor = new Visitor;
+        $visitor->ip = $request->ip();
+        $visitor->save();
 
-        return view('front_page', compact('about', 'experience', 'education', 'skills', 'user', 'projects', 'certificates'));
+        return view('front_page', compact('about', 'experience', 'education', 'skills', 'user', 'projects', 'certificates', 'visitor'));
     }
 }

@@ -2,23 +2,15 @@
 
 namespace App\Models;
 
+use Coderflex\Laravisit\Concerns\CanVisit;
+use Coderflex\Laravisit\Concerns\HasVisits;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
-class Project extends Model
+class Project extends Model implements CanVisit
 {
     use HasFactory;
+    use HasVisits;
 
     protected $guarded = [];
-    protected $keyType = 'string';
-
-    protected static function boot()
-    {
-        parent::boot();
-        // auto-create uuid
-        static::creating(function ($model) {
-            $model->{$model->getKeyName()} = Str::uuid()->toString();
-        });
-    }
 }
