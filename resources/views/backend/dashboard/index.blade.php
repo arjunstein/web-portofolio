@@ -93,7 +93,7 @@
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title">Visitor OS {{ date('Y') }}</h5>
+                                            <h5 class="card-title">Visitor OS {{ date('F Y') }}</h5>
 
                                             <!-- Pie Chart -->
                                             <canvas id="pieChart" style="max-height: 400px;"></canvas>
@@ -102,17 +102,10 @@
                                                     new Chart(document.querySelector('#pieChart'), {
                                                         type: 'pie',
                                                         data: {
-                                                            labels: [
-                                                                'macOS',
-                                                                'Windows',
-                                                                'android',
-                                                                'iOS',
-                                                                'Linux',
-                                                                'Other'
-                                                            ],
+                                                            labels: @json($osLabels),
                                                             datasets: [{
                                                                 label: 'Total',
-                                                                data: [100, 50, 100, 27, 30, 11],
+                                                                data: @json($osCounts),
                                                                 backgroundColor: [
                                                                     'rgb(255, 99, 132)', // Warna merah muda
                                                                     'rgb(54, 162, 235)', // Warna biru
