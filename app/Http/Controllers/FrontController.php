@@ -11,13 +11,15 @@ use App\Models\Skill;
 use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Jenssegers\Agent\Agent;
 
 class FrontController extends Controller
 {
     public function index(Request $request)
     {
+        $agent = new Agent();
+        $platform = $agent->platform();
+
         $user = User::latest('id')->first();
         $about = About::latest('id')->first();
         $experience = Experience::orderBy('end_period', 'desc')->get();
@@ -27,6 +29,7 @@ class FrontController extends Controller
         $certificates = Certificate::latest()->get();
         $visitor = new Visitor;
         $visitor->ip = $request->ip();
+        $visitor->visitor_os = $platform;
         $visitor->save();
 
         return view('front_page', compact('about', 'experience', 'education', 'skills', 'user', 'projects', 'certificates', 'visitor'));
