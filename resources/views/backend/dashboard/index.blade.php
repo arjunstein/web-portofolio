@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Dashboard Summary</h1>
+        <h1>Dashboard Summary | {{ date('d F Y') }}</h1>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
@@ -93,7 +93,7 @@
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title">Visitor OS {{ date('F Y') }}</h5>
+                                            <h5 class="card-title">Most Visitor OS {{ date('F Y') }}</h5>
 
                                             <!-- Pie Chart -->
                                             <canvas id="pieChart" style="max-height: 400px;"></canvas>
@@ -129,7 +129,7 @@
                                 <div class="col-lg-6">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h5 class="card-title">Most Socmed Clicked</h5>
+                                            <h5 class="card-title">Most Socmed Visited {{ date('F Y') }}</h5>
 
                                             <!-- Doughnut Chart -->
                                             <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
@@ -138,24 +138,17 @@
                                                     new Chart(document.querySelector('#doughnutChart'), {
                                                         type: 'doughnut',
                                                         data: {
-                                                            labels: [
-                                                                'Whatsapp',
-                                                                'Facebook',
-                                                                'Linkedin',
-                                                                'Instagram',
-                                                                'Twitter',
-                                                                'Email'
-                                                            ],
+                                                            labels: @json($socmedLabel),
                                                             datasets: [{
                                                                 label: 'Clicked',
-                                                                data: [300, 50, 100, 12, 31, 45],
+                                                                data: @json($socmedCounts),
                                                                 backgroundColor: [
-                                                                    'rgb(255, 99, 132)',
-                                                                    'rgb(54, 162, 235)',
-                                                                    'rgb(255, 205, 86)',
-                                                                    'rgb(201, 203, 207)',
-                                                                    'rgb(54, 162, 235)',
-                                                                    'rgb(255, 99, 132)'
+                                                                    'rgb(75, 192, 192)', // Warna hijau aqu
+                                                                    'rgb(255, 99, 132)', // Warna merah mud
+                                                                    'rgb(255, 205, 86)', // Warna kuning
+                                                                    'rgb(201, 203, 207)', // Warna abu-abu
+                                                                    'rgb(153, 102, 255)', // Warna ungu
+                                                                    'rgb(54, 162, 235)', // Warna biru
                                                                 ],
                                                                 hoverOffset: 4
                                                             }]

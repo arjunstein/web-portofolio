@@ -11,7 +11,7 @@ class Visitor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['ip', 'visitor_os'];
+    protected $fillable = ['ip', 'visitor_os', 'socmed_visited'];
 
     public static function monthlyVisitor($year = null)
     {
@@ -41,6 +41,30 @@ class Visitor extends Model
             ->whereYear('created_at', $year)
             ->whereMonth('created_at', $month)
             ->groupBy('visitor_os')
+            ->get();
+    }
+
+    public static function monthlySocmedVisitor($socmed = null, $month = null, $year = null)
+    {
+        // Jika bulan dan tahun tidak diberikan, gunakan bulan dan tahun saat ini
+        $month = $month ?: Carbon::now()->month;
+        $year = $year ?: Carbon::now()->year;
+
+        $query = self::query()
+            ->whereNotNull('socmed_visited')
+            ->whereYear('created_at', $year)
+            ->whereMonth('created_at', $month);
+
+        // Jika media sosial tertentu diberikan, tambahkan kondisi pencarian
+        if ($socmed) {
+            $query->where('socmed_visited', $socmed);
+        }
+
+        return $query->select(
+            'socmed_visited',
+            DB::raw('COUNT(*) as count')
+        )
+            ->groupBy('socmed_visited')
             ->get();
     }
 }

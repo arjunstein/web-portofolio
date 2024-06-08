@@ -7,7 +7,7 @@
     @stack('styles')
 </head>
 
-@vite([])
+{{-- @vite([]) --}}
 
 <body>
     <!-- ======= Header ======= -->

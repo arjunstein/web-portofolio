@@ -27,11 +27,93 @@ class FrontController extends Controller
         $education = Education::orderBy('start_year', 'desc')->get();
         $projects = Project::orderBy('start_project', 'desc')->get();
         $certificates = Certificate::latest()->get();
+
         $visitor = new Visitor;
         $visitor->ip = $request->ip();
         $visitor->visitor_os = $platform;
         $visitor->save();
 
-        return view('front_page', compact('about', 'experience', 'education', 'skills', 'user', 'projects', 'certificates', 'visitor'));
+        return view('front_page', compact(
+            'about',
+            'experience',
+            'education',
+            'skills',
+            'user',
+            'projects',
+            'certificates',
+            'visitor'
+        ));
+    }
+
+    public function linkedinClick(Request $request)
+    {
+        $ip = $request->ip();
+
+        // Coba update entri yang sudah ada berdasarkan IP
+        Visitor::latest('id')->where('ip', $ip)->first()->update([
+            'socmed_visited' => 'Linkedin',
+        ]);
+
+        return response()->json(['message' => 'Visitor data saved successfully']);
+    }
+
+    public function gdriveClick(Request $request)
+    {
+        $ip = $request->ip();
+
+        // Coba update entri yang sudah ada berdasarkan IP
+        Visitor::latest('id')->where('ip', $ip)->first()->update([
+            'socmed_visited' => 'CV Viewer',
+        ]);
+
+        return response()->json(['message' => 'Visitor data saved successfully']);
+    }
+
+    public function igClick(Request $request)
+    {
+        $ip = $request->ip();
+
+        // Coba update entri yang sudah ada berdasarkan IP
+        Visitor::latest('id')->where('ip', $ip)->first()->update([
+            'socmed_visited' => 'Instagram',
+        ]);
+
+        return response()->json(['message' => 'Visitor data saved successfully']);
+    }
+
+    public function fbClick(Request $request)
+    {
+        $ip = $request->ip();
+
+        // Coba update entri yang sudah ada berdasarkan IP
+        Visitor::latest('id')->where('ip', $ip)->first()->update([
+            'socmed_visited' => 'Facebook',
+        ]);
+
+        return response()->json(['message' => 'Visitor data saved successfully']);
+    }
+
+    public function waClick(Request $request)
+    {
+        $ip = $request->ip();
+
+        // Coba update entri yang sudah ada berdasarkan IP
+        Visitor::latest('id')->where('ip', $ip)->first()->update([
+            'socmed_visited' => 'Whatsapp',
+        ]);
+
+        return response()->json(['message' => 'Visitor data saved successfully']);
+    }
+
+    public function twitterClick(Request $request)
+    {
+        $ip = $request->ip();
+
+        // Coba update entri yang sudah ada berdasarkan IP
+        Visitor::latest('id')->where('ip', $ip)->first()->update([
+            'socmed_visited' => 'Twitter',
+        ]);
+
+        return response()->json(['message' => 'Visitor data saved successfully']);
     }
 }
