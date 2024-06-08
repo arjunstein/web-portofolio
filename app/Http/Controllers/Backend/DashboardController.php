@@ -35,6 +35,9 @@ class DashboardController extends Controller
         $visitorOsData = Visitor::monthlyVisitorOs();
         $osLabels = $visitorOsData->pluck('visitor_os');
         $osCounts = $visitorOsData->pluck('count');
+        $socmedVisitorData = Visitor::monthlySocmedVisitor();
+        $socmedLabel = $socmedVisitorData->pluck('socmed_visited');
+        $socmedCounts = $socmedVisitorData->pluck('count');
 
         return view('backend.dashboard.index', compact(
             'about',
@@ -45,7 +48,9 @@ class DashboardController extends Controller
             'certificates',
             'monthlyCounts',
             'osLabels',
-            'osCounts'
+            'osCounts',
+            'socmedLabel',
+            'socmedCounts'
         ));
     }
 }

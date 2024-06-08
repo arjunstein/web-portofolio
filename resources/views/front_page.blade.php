@@ -58,25 +58,36 @@
                             </div>
                             <div class="h2 title">{{ isset($about->user->name) ? $about->user->name : 'John Doe' }}</div>
                             <p class="category text-white"><i>{{ isset($about->title) ? $about->title : '' }}</i></p>
-                            <a class="btn btn-primary smooth-scroll mr-2"
+                            <a id="linkedin-link"
+                                class="btn btn-primary smooth-scroll mr-2 {{ isset($about->linkedin) ? '' : 'disabled' }}"
                                 href="{{ isset($about->linkedin) ? $about->linkedin : '#' }}" data-aos="zoom-in"
-                                target="_blank" data-aos-anchor="data-aos-anchor">Hire Me</a><a class="btn btn-primary"
-                                href="{{ isset($about->gdrive_link) ? $about->gdrive_link : '#' }}" target="_blank" data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
+                                target="_blank" data-aos-anchor="data-aos-anchor">Hire Me</a>
+                            <a id="gdrive-link" class="btn btn-primary {{ isset($about->gdrive_link) ? '' : 'disabled' }}"
+                                href="{{ isset($about->gdrive_link) ? $about->gdrive_link : '#' }}" target="_blank"
+                                data-aos="zoom-in" data-aos-anchor="data-aos-anchor">Download CV</a>
                         </div>
                     </div>
                     <div class="section">
                         <div class="container">
                             <div class="button-container">
-                                <a class="btn btn-default btn-round btn-lg btn-icon"
+                                <a id="fb-link"
+                                    class="btn btn-default btn-round btn-lg btn-icon {{ isset($about->facebook) ? '' : 'disabled' }}"
                                     href="{{ isset($about->facebook) ? $about->facebook : '#' }}" target="_blank"
-                                    rel="tooltip" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a><a
-                                    class="btn btn-default btn-round btn-lg btn-icon"
+                                    rel="tooltip" title="Follow me on Facebook"><i class="fa fa-facebook"></i></a>
+                                <a id="ig-link"
+                                    class="btn btn-default btn-round btn-lg btn-icon {{ isset($about->instagram) ? '' : 'disabled' }}"
                                     href="{{ isset($about->instagram) ? $about->instagram : '#' }}" target="_blank"
-                                    rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a><a
-                                    class="btn btn-default btn-round btn-lg btn-icon"
+                                    rel="tooltip" title="Follow me on Instagram"><i class="fa fa-instagram"></i></a>
+                                <a id="wa-link"
+                                    class="btn btn-default btn-round btn-lg btn-icon {{ isset($about->whatsapp) ? '' : 'disabled' }}"
                                     href="https://wa.me/62{{ isset($about->whatsapp) ? $about->whatsapp : '#' }}"
                                     target="_blank" rel="tooltip" title="Chat me on Whatsapp"><i
                                         class="fa fa-whatsapp"></i></a>
+                                <a id="twitter-link"
+                                    class="btn btn-default btn-round btn-lg btn-icon {{ isset($about->twitter) ? '' : 'disabled' }}"
+                                    href="{{ isset($about->twitter) ? $about->twitter : '#' }}"
+                                    target="_blank" rel="tooltip" title="Follow me on twitter"><i
+                                        class="fa fa-twitter"></i></a>
                             </div>
                         </div>
                     </div>
@@ -381,5 +392,152 @@
 
         // Add event listener to the button to call topFunction on click
         mybutton.addEventListener('click', topFunction);
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#linkedin-link').on('click', function(event) {
+                event.preventDefault();
+                let url = $(this).attr('href');
+
+                $.ajax({
+                    url: '{{ route('linkedin.click') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        linkedin_url: url,
+                    },
+                    success: function(response) {
+                        console.log('LinkedIn link clicked and data sent to controller');
+                        window.open(url, '_blank');
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr);
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $('#gdrive-link').on('click', function(event) {
+                event.preventDefault();
+                let url = $(this).attr('href');
+
+                $.ajax({
+                    url: '{{ route('gdrive.click') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        gdrive_url: url,
+                    },
+                    success: function(response) {
+                        console.log('gdrive link clicked and data sent to controller');
+                        window.open(url, '_blank');
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr);
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $('#ig-link').on('click', function(event) {
+                event.preventDefault();
+                let url = $(this).attr('href');
+
+                $.ajax({
+                    url: '{{ route('ig.click') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        ig_url: url,
+                    },
+                    success: function(response) {
+                        console.log('ig link clicked and data sent to controller');
+                        window.open(url, '_blank');
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr);
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $('#fb-link').on('click', function(event) {
+                event.preventDefault();
+                let url = $(this).attr('href');
+
+                $.ajax({
+                    url: '{{ route('fb.click') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        fb_url: url,
+                    },
+                    success: function(response) {
+                        console.log('fb link clicked and data sent to controller');
+                        window.open(url, '_blank');
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr);
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $('#wa-link').on('click', function(event) {
+                event.preventDefault();
+                let url = $(this).attr('href');
+
+                $.ajax({
+                    url: '{{ route('wa.click') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        wa_url: url,
+                    },
+                    success: function(response) {
+                        console.log('wa link clicked and data sent to controller');
+                        window.open(url, '_blank');
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr);
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
+
+        $(document).ready(function() {
+            $('#twitter-link').on('click', function(event) {
+                event.preventDefault();
+                let url = $(this).attr('href');
+
+                $.ajax({
+                    url: '{{ route('twitter.click') }}',
+                    method: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}',
+                        twitter_url: url,
+                    },
+                    success: function(response) {
+                        console.log('twitter link clicked and data sent to controller');
+                        window.open(url, '_blank');
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr);
+                        window.open(url, '_blank');
+                    }
+                });
+            });
+        });
     </script>
 @endpush

@@ -29,6 +29,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontController::class, 'index']);
+Route::post('/linkedin-click', [FrontController::class, 'linkedinClick'])->name('linkedin.click');
+Route::post('/ig-click', [FrontController::class, 'igClick'])->name('ig.click');
+Route::post('/fb-click', [FrontController::class, 'fbClick'])->name('fb.click');
+Route::post('/wa-click', [FrontController::class, 'waClick'])->name('wa.click');
+Route::post('/gdrive-click', [FrontController::class, 'gdriveClick'])->name('gdrive.click');
+Route::post('/twitter-click', [FrontController::class, 'twitterClick'])->name('twitter.click');
 
 Route::prefix('backend')->middleware('auth')->group(function () {
     // dashboard route
