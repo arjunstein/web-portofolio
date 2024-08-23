@@ -1,8 +1,10 @@
-<script src="/front_assets/js/core/jquery.3.2.1.min.js?ver=1.1.0"></script>
-<script src="/front_assets/js/core/popper.min.js?ver=1.1.0"></script>
-<script src="/front_assets/js/core/bootstrap.min.js?ver=1.1.0"></script>
-<script src="/front_assets/js/now-ui-kit.js?ver=1.1.0"></script>
-{{-- <script src="/front_assets/js/aos.js?ver=1.1.0"></script> --}}
-<script src="/front_assets/scripts/main.js?ver=1.1.0"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-@stack('custom_script')
+  <!--
+  - custom js link
+-->
+  <script src="{{ asset('assets_front/js/script.js') }}"></script>
+
+  <!--
+  - ionicon link
+-->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

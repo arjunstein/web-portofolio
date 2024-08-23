@@ -1,19 +1,21 @@
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Welcome to my site | {{ isset($user->name) ? $user->name : 'Guest' }}</title>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet" />
-<link href="/front_assets/css/aos.css?ver=1.1.0" rel="stylesheet" />
-<link href="/front_assets/css/bootstrap.min.css?ver=1.1.0" rel="stylesheet" />
-<link href="/front_assets/css/main.css?ver=1.1.0" rel="stylesheet" />
-<link rel="shortcut icon" href="/front_assets/images/favicon.ico" type="image/x-icon" />
-<noscript>
-    <style type="text/css">
-        [data-aos] {
-            opacity: 1 !important;
-            transform: translate(0) scale(1) !important;
-        }
-    </style>
-</noscript>
-@stack('styles')
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV | Arjun Gunawan</title>
+
+<!--
+  - favicon
+-->
+<link rel="shortcut icon" href="{{ asset('assets_front/images/logo.ico') }}" type="image/x-icon">
+
+<!--
+  - custom css link
+-->
+<link rel="stylesheet" href="{{ asset('assets_front/css/style.css?v=' . date('dmYHi')) }}">
+
+<!--
+  - google font link
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
