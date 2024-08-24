@@ -7,299 +7,8 @@
         </header>
         <section class="about-text">
             <p>
-            {{ isset($about->summary) ? $about->summary : "Not set" }}
+                {{ isset($about->summary) ? $about->summary : 'Not set' }}
             </p>
-        </section>
-        <section class="service">
-            <h3 class="h3 service-title">What i'm doing</h3>
-            <ul class="service-list">
-                <li class="service-item">
-                    <div class="service-icon-box">
-                        <img src="/assets_front/images/icon-design.svg" alt="design icon" width="40">
-                    </div>
-                    <div class="service-content-box">
-                        <h4 class="h4 service-item-title">Web design</h4>
-                        <p class="service-item-text">
-                            The most modern and high-quality design made at a professional level.
-                        </p>
-                    </div>
-                </li>
-                <li class="service-item">
-                    <div class="service-icon-box">
-                        <img src="/assets_front/images/icon-dev.svg" alt="Web development icon" width="40">
-                    </div>
-                    <div class="service-content-box">
-                        <h4 class="h4 service-item-title">Web development</h4>
-                        <p class="service-item-text">
-                            High-quality development of sites at the professional level.
-                        </p>
-                    </div>
-                </li>
-                <li class="service-item">
-                    <div class="service-icon-box">
-                        <img src="/assets_front/images/icon-app.svg" alt="mobile app icon" width="40">
-                    </div>
-                    <div class="service-content-box">
-                        <h4 class="h4 service-item-title">Mobile apps</h4>
-                        <p class="service-item-text">
-                            Professional development of applications for iOS and Android.
-                        </p>
-                    </div>
-                </li>
-                <li class="service-item">
-                    <div class="service-icon-box">
-                        <img src="/assets_front/images/icon-photo.svg" alt="camera icon" width="40">
-                    </div>
-                    <div class="service-content-box">
-                        <h4 class="h4 service-item-title">Photography</h4>
-                        <p class="service-item-text">
-                            I make high-quality photos of any category at a professional level.
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <section class="testimonials">
-            <h3 class="h3 testimonials-title">Testimonials</h3>
-            <ul class="testimonials-list has-scrollbar">
-                <li class="testimonials-item">
-                    <div class="content-card" data-testimonials-item>
-                        <figure class="testimonials-avatar-box">
-                            <img src="/assets_front/images/avatar-1.png" alt="Daniel lewis" width="60"
-                                data-testimonials-avatar>
-                        </figure>
-                        <h4 class="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
-                        <div class="testimonials-text" data-testimonials-text>
-                            <p>
-                                Richard was hired to create a corporate identity. We were very pleased with the
-                                work done. She has a
-                                lot of experience
-                                and is very concerned about the needs of client. Lorem ipsum dolor sit amet,
-                                ullamcous cididt
-                                consectetur adipiscing
-                                elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                            </p>
-                        </div>
-                    </div>
-                </li>
-                <li class="testimonials-item">
-                    <div class="content-card" data-testimonials-item>
-                        <figure class="testimonials-avatar-box">
-                            <img src="/assets_front/images/avatar-2.png" alt="Jessica miller" width="60"
-                                data-testimonials-avatar>
-                        </figure>
-                        <h4 class="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
-                        <div class="testimonials-text" data-testimonials-text>
-                            <p>
-                                Richard was hired to create a corporate identity. We were very pleased with the
-                                work done. She has a
-                                lot of experience
-                                and is very concerned about the needs of client. Lorem ipsum dolor sit amet,
-                                ullamcous cididt
-                                consectetur adipiscing
-                                elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                            </p>
-                        </div>
-                    </div>
-                </li>
-                <li class="testimonials-item">
-                    <div class="content-card" data-testimonials-item>
-                        <figure class="testimonials-avatar-box">
-                            <img src="/assets_front/images/avatar-3.png" alt="Emily evans" width="60"
-                                data-testimonials-avatar>
-                        </figure>
-                        <h4 class="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
-                        <div class="testimonials-text" data-testimonials-text>
-                            <p>
-                                Richard was hired to create a corporate identity. We were very pleased with the
-                                work done. She has a
-                                lot of experience
-                                and is very concerned about the needs of client. Lorem ipsum dolor sit amet,
-                                ullamcous cididt
-                                consectetur adipiscing
-                                elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                            </p>
-                        </div>
-                    </div>
-                </li>
-                <li class="testimonials-item">
-                    <div class="content-card" data-testimonials-item>
-                        <figure class="testimonials-avatar-box">
-                            <img src="/assets_front/images/avatar-4.png" alt="Henry william" width="60"
-                                data-testimonials-avatar>
-                        </figure>
-                        <h4 class="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
-                        <div class="testimonials-text" data-testimonials-text>
-                            <p>
-                                Richard was hired to create a corporate identity. We were very pleased with the
-                                work done. She has a
-                                lot of experience
-                                and is very concerned about the needs of client. Lorem ipsum dolor sit amet,
-                                ullamcous cididt
-                                consectetur adipiscing
-                                elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                            </p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </section>
-        <!--
-              - testimonials modal
-            -->
-        <div class="modal-container" data-modal-container>
-            <div class="overlay" data-overlay></div>
-            <section class="testimonials-modal">
-                <button class="modal-close-btn" data-modal-close-btn>
-                    <ion-icon name="close-outline"></ion-icon>
-                </button>
-                <div class="modal-img-wrapper">
-                    <figure class="modal-avatar-box">
-                        <img src="/assets_front/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
-                    </figure>
-                    <img src="/assets_front/images/icon-quote.svg" alt="quote icon">
-                </div>
-                <div class="modal-content">
-                    <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
-                    <time datetime="2021-06-14">14 June, 2021</time>
-                    <div data-modal-text>
-                        <p>
-                            Richard was hired to create a corporate identity. We were very pleased with the work
-                            done. She has a
-                            lot of experience
-                            and is very concerned about the needs of client. Lorem ipsum dolor sit amet,
-                            ullamcous cididt
-                            consectetur adipiscing
-                            elit, seds do et eiusmod tempor incididunt ut laborels dolore magnarels alia.
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <!--
-              - clients
-            -->
-        <section class="clients">
-            <h3 class="h3 clients-title">Clients</h3>
-            <ul class="clients-list has-scrollbar">
-                <li class="clients-item">
-                    <a href="#">
-                        <img src="/assets_front/images/logo-1-color.png" alt="client logo">
-                    </a>
-                </li>
-                <li class="clients-item">
-                    <a href="#">
-                        <img src="/assets_front/images/logo-2-color.png" alt="client logo">
-                    </a>
-                </li>
-                <li class="clients-item">
-                    <a href="#">
-                        <img src="/assets_front/images/logo-3-color.png" alt="client logo">
-                    </a>
-                </li>
-                <li class="clients-item">
-                    <a href="#">
-                        <img src="/assets_front/images/logo-4-color.png" alt="client logo">
-                    </a>
-                </li>
-                <li class="clients-item">
-                    <a href="#">
-                        <img src="/assets_front/images/logo-5-color.png" alt="client logo">
-                    </a>
-                </li>
-                <li class="clients-item">
-                    <a href="#">
-                        <img src="/assets_front/images/logo-6-color.png" alt="client logo">
-                    </a>
-                </li>
-            </ul>
-        </section>
-    </article>
-    <!--
-            - #RESUME
-          -->
-    <article class="resume" data-page="resume">
-        <header>
-            <h2 class="h2 article-title">Resume</h2>
-        </header>
-        <section class="timeline">
-            <div class="title-wrapper">
-                <div class="icon-box">
-                    <ion-icon name="book-outline"></ion-icon>
-                </div>
-                <h3 class="h3">Education</h3>
-            </div>
-            <ol class="timeline-list">
-                <li class="timeline-item">
-                    <h4 class="h4 timeline-item-title">University school of the arts</h4>
-                    <span>2007 — 2008</span>
-                    <p class="timeline-text">
-                        Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti,
-                        quos dolores et
-                        quas molestias
-                        exceptur.
-                    </p>
-                </li>
-                <li class="timeline-item">
-                    <h4 class="h4 timeline-item-title">New york academy of art</h4>
-                    <span>2006 — 2007</span>
-                    <p class="timeline-text">
-                        Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas
-                        assumenda est
-                        omnis..
-                    </p>
-                </li>
-                <li class="timeline-item">
-                    <h4 class="h4 timeline-item-title">High school of art and design</h4>
-                    <span>2002 — 2004</span>
-                    <p class="timeline-text">
-                        Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit,
-                        sed consequuntur
-                        magni dolores
-                        eos.
-                    </p>
-                </li>
-            </ol>
-        </section>
-        <section class="timeline">
-            <div class="title-wrapper">
-                <div class="icon-box">
-                    <ion-icon name="book-outline"></ion-icon>
-                </div>
-                <h3 class="h3">Experience</h3>
-            </div>
-            <ol class="timeline-list">
-                <li class="timeline-item">
-                    <h4 class="h4 timeline-item-title">Creative director</h4>
-                    <span>2015 — Present</span>
-                    <p class="timeline-text">
-                        Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos
-                        dolores et qvuas
-                        molestias
-                        exceptur.
-                    </p>
-                </li>
-                <li class="timeline-item">
-                    <h4 class="h4 timeline-item-title">Art director</h4>
-                    <span>2013 — 2015</span>
-                    <p class="timeline-text">
-                        Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti,
-                        quos dolores et
-                        quas molestias
-                        exceptur.
-                    </p>
-                </li>
-                <li class="timeline-item">
-                    <h4 class="h4 timeline-item-title">Web designer</h4>
-                    <span>2010 — 2013</span>
-                    <p class="timeline-text">
-                        Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti,
-                        quos dolores et
-                        quas molestias
-                        exceptur.
-                    </p>
-                </li>
-            </ol>
         </section>
         <section class="skill">
             <h3 class="h3 skills-title">My skills</h3>
@@ -342,10 +51,56 @@
                 </li>
             </ul>
         </section>
+        <section class="timeline">
+            <div class="title-wrapper">
+                <div class="icon-box">
+                    <ion-icon name="book-outline"></ion-icon>
+                </div>
+                <h3 class="h3">Experience</h3>
+            </div>
+            <ol class="timeline-list">
+                @foreach ($experience as $exp)
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">{{ $exp->company_name }}</h4>
+                        <p class="timeline-text">{{ $exp->title }}</p>
+                        <span>{{ \Carbon\Carbon::parse($exp->start_period)->format('F Y') . ' - ' . \Carbon\Carbon::parse($exp->end_period)->format('F Y') }}</span>
+                        <p class="timeline-text">
+                            {{ $exp->jobdesc }}
+                        </p>
+                    </li>
+                @endforeach
+            </ol>
+        </section>
+        <section class="timeline">
+            <div class="title-wrapper">
+                <div class="icon-box">
+                    <ion-icon name="book-outline"></ion-icon>
+                </div>
+                <h3 class="h3">Education</h3>
+            </div>
+            <ol class="timeline-list">
+                @foreach ($education as $edu)
+                    <li class="timeline-item">
+                        <h4 class="h4 timeline-item-title">{{ $edu->school }}</h4>
+                        <p class="timeline-text">{{ $edu->title }}, {{ $edu->major }}</p>
+                        <span>{{ $edu->start_year }}-{{ $edu->end_year }}</span>
+                        <p class="timeline-text">
+                            {{ $edu->description }}
+                        </p>
+                    </li>
+                @endforeach
+            </ol>
+        </section>
+        <div class="modal-container" data-modal-container>
+            <div class="overlay" data-overlay></div>
+            <section class="testimonials-modal">
+                <button class="modal-close-btn" data-modal-close-btn>
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </section>
+        </div>
     </article>
-    <!--
-            - #PORTFOLIO
-          -->
+
     <article class="portfolio" data-page="portfolio">
         <header>
             <h2 class="h2 article-title">Portfolio</h2>
@@ -499,12 +254,9 @@
             </ul>
         </section>
     </article>
-    <!--
-            - #BLOG
-          -->
-    <article class="blog" data-page="blog">
+    <article class="blog" data-page="achievements">
         <header>
-            <h2 class="h2 article-title">Blog</h2>
+            <h2 class="h2 article-title">Achievements</h2>
         </header>
         <section class="blog-posts">
             <ul class="blog-posts-list">
