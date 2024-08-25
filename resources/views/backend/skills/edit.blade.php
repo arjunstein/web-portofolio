@@ -36,10 +36,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-12">
-                                <label for="inputName5" class="form-label">icon</label>
-                                <input type="file" name="icon" value="{{ $skill->icon }}" id
-                                    class="form-control @error('icon') is-invalid @enderror" id="inputName5">
-                                @error('icon')
+                                <label for="inputName5" class="form-label">Icon URL</label>
+                                <input type="text" name="pathIcon" value="{{ $skill->pathIcon }}" id
+                                    class="form-control @error('pathIcon') is-invalid @enderror" id="inputName5">
+                                @error('pathIcon')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>

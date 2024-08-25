@@ -39,7 +39,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Skill Name</th>
-                                    <th>Icon</th>
+                                    <th>Icon URL</th>
                                     <th>Created At</th>
                                     <th>Action</th>
                                 </tr>
@@ -49,7 +49,7 @@
                                     <tr>
                                         <td>{{ $e + 1 }}</td>
                                         <td>{{ $skl->skillName }}</td>
-                                        <td>{{ $skl->icon }}%</td>
+                                        <td>{{ substr($skl->pathIcon,0,30) }}%</td>
                                         <td>{{ $skl->created_at->diffForHumans() }}</td>
                                         <td>
                                             <form action="{{ route('backend.skills.delete', ['id' => $skl]) }}"
