@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Add Skills</h5>
-                        <form class="row g-3" action="{{ route('backend.skills.store') }}" method="POST">
+                        <form class="row g-3" action="{{ route('backend.skills.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-12">
                                 <label for="inputName5" class="form-label">Skill Name</label>
@@ -25,10 +25,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-12">
-                                <label for="inputName5" class="form-label">Percentase</label>
-                                <input type="number" name="percentase"
-                                    class="form-control @error('percentase') is-invalid @enderror" id="inputName5">
-                                @error('percentase')
+                                <label for="inputName5" class="form-label">icon</label>
+                                <input type="file" name="icon"
+                                    class="form-control @error('icon') is-invalid @enderror" id="inputName5">
+                                @error('icon')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>

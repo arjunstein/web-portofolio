@@ -18,8 +18,7 @@ class SkillController extends Controller
 
     public function create()
     {
-        $about =
-            About::latest('id')->first();
+        $about = About::latest('id')->first();
         return view('backend.skills.create', compact('about'));
     }
 
@@ -27,13 +26,13 @@ class SkillController extends Controller
     {
         $request->validate([
             'skillName' => 'nullable|string|max:190',
-            'percentase' => 'nullable|numeric|between:1,100'
+            'icon' => 'nullable|mimes:png,svg|max:300'
         ]);
 
         try {
             $skill = new Skill;
             $skill->skillName = $request->skillName;
-            $skill->percentase = $request->percentase;
+            $skill->icon = $request->icon;
             $skill->save();
 
             return redirect()->route('backend.skills')->with('success', 'Skill added successfully');
@@ -53,7 +52,7 @@ class SkillController extends Controller
     {
         $request->validate([
             'skillName' => 'nullable|string|max:190',
-            'percentase' => 'nullable|numeric|between:1,100'
+            'icon' => 'nullable|mimes:png,svg|max:300'
         ]);
         try {
             $skill = Skill::findOrFail($id);

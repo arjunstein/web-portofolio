@@ -22,7 +22,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Edit Skills</h5>
                         <form class="row g-3" action="{{ route('backend.skills.update', ['id' => $skill]) }}"
-                            method="POST">
+                            method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="col-md-12">
@@ -36,10 +36,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-12">
-                                <label for="inputName5" class="form-label">Percentase</label>
-                                <input type="number" name="percentase" value="{{ $skill->percentase }}" id
-                                    class="form-control @error('percentase') is-invalid @enderror" id="inputName5">
-                                @error('percentase')
+                                <label for="inputName5" class="form-label">icon</label>
+                                <input type="file" name="icon" value="{{ $skill->icon }}" id
+                                    class="form-control @error('icon') is-invalid @enderror" id="inputName5">
+                                @error('icon')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>

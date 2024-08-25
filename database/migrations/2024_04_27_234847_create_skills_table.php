@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('skillName');
-            $table->double('percentase');
+            $table->string('icon');
             $table->timestamps();
         });
     }
