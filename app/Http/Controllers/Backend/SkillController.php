@@ -11,7 +11,7 @@ class SkillController extends Controller
 {
     public function index()
     {
-        $skills = Skill::orderBy('created_at', 'desc')->get();
+        $skills = Skill::orderBy('created_at', 'asc')->get();
         $about = About::latest('id')->first();
         return view('backend.skills.index', compact('about', 'skills'));
     }
@@ -26,13 +26,13 @@ class SkillController extends Controller
     {
         $request->validate([
             'skillName' => 'nullable|string|max:190',
-            'icon' => 'nullable|mimes:png,svg|max:300'
+            'pathIcon' => 'nullable|string'
         ]);
 
         try {
             $skill = new Skill;
             $skill->skillName = $request->skillName;
-            $skill->icon = $request->icon;
+            $skill->pathIcon = $request->pathIcon;
             $skill->save();
 
             return redirect()->route('backend.skills')->with('success', 'Skill added successfully');
@@ -52,7 +52,7 @@ class SkillController extends Controller
     {
         $request->validate([
             'skillName' => 'nullable|string|max:190',
-            'icon' => 'nullable|mimes:png,svg|max:300'
+            'pathIcon' => 'nullable|string',
         ]);
         try {
             $skill = Skill::findOrFail($id);
