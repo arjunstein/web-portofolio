@@ -17,9 +17,6 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        $agent = new Agent();
-        $platform = $agent->platform();
-
         $user = User::latest('id')->first();
         $about = About::latest('id')->first();
         $experience = Experience::orderBy('end_period', 'desc')->get();
@@ -28,10 +25,16 @@ class FrontController extends Controller
         $projects = Project::orderBy('start_project', 'desc')->get();
         $certificates = Certificate::latest()->get();
 
-        $visitor = new Visitor;
-        $visitor->ip = $request->ip();
-        $visitor->visitor_os = $platform;
-        $visitor->save();
+        $agent = new Agent();
+        $platform = $agent->platform();
+        $robot = $agent->isRobot();
+
+        if (!$robot) {
+            $visitor = new Visitor;
+            $visitor->ip = $request->ip();
+            $visitor->visitor_os = $platform;
+            $visitor->save();
+        }
 
         return view('front_page', compact(
             'about',
