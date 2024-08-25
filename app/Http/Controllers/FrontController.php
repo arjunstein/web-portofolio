@@ -20,7 +20,7 @@ class FrontController extends Controller
         $user = User::latest('id')->first();
         $about = About::latest('id')->first();
         $experience = Experience::orderBy('end_period', 'desc')->get();
-        $skills = Skill::orderBy('percentase', 'desc')->get();
+        $skills = Skill::orderBy('id', 'asc')->get();
         $education = Education::orderBy('start_year', 'desc')->get();
         $projects = Project::orderBy('start_project', 'desc')->get();
         $certificates = Certificate::latest()->get();
