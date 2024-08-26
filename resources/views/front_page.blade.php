@@ -11,7 +11,7 @@
             </p>
         </section>
         <section class="skill">
-            <h3 class="h3 skills-title">My skills</h3>
+            <h3 class="h3 skills-title">Skills</h3>
             <div class="clients-list has-scrollbar">
                 @foreach ($skills as $skl)
                     <p title="{{ $skl->skillName }}">{!! $skl->pathIcon !!}</p>
