@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
             $table->string('ip');
+            $table->string('visitor_os');
+            $table->string('socmed_visited')->nullable();
             $table->timestamps();
         });
     }
