@@ -31,8 +31,8 @@
             </div>
             <div class="contact-info">
                 <p class="contact-title">Phone</p>
-                <a href="tel:+62{{ isset($about->phone) ? $about->phone : 'Not set' }}"
-                    class="contact-link">{{ '+62' . isset($about->phone) ? $about->phone : 'xxx' }}</a>
+                <a href="{{ 'tel:+62' . (isset($about->phone) ? $about->phone : 'Not set') }}"
+                    class="contact-link">{{ '+62' . (isset($about->phone) ? $about->phone : 'xxx') }}</a>
             </div>
         </li>
         <li class="contact-item">
@@ -49,28 +49,29 @@
     <div class="separator"></div>
     <ul class="social-list">
         <li class="social-item">
-            <a href="{{ 'https://wa.me/62' . isset($about->whatsapp) ? $about->whatsapp : 'Not set' . '?text=Hai%20Arjun' }}" target="_blank"
-                class="social-link">
+            <a href="{{ 'https://wa.me/62' . (isset($about->whatsapp) ? $about->whatsapp : 'Not set') . '?text=Hai%20Arjun' }}"
+                target="_blank" class="social-link">
                 <ion-icon name="logo-whatsapp"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ isset($about->linkedin) ? $about->linkedin : 'Not set'}}" target="_blank" class="social-link">
+            <a href="{{ isset($about->linkedin) ? $about->linkedin : 'Not set' }}" target="_blank" class="social-link">
                 <ion-icon name="logo-linkedin"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ isset($about->facebook) ? $about->facebook : 'Not set'}}" target="_blank" class="social-link">
+            <a href="{{ isset($about->facebook) ? $about->facebook : 'Not set' }}" target="_blank" class="social-link">
                 <ion-icon name="logo-facebook"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ isset($about->twitter) ? $about->twitter : 'Not set'}}" target="_blank" class="social-link">
+            <a href="{{ isset($about->twitter) ? $about->twitter : 'Not set' }}" target="_blank" class="social-link">
                 <ion-icon name="logo-twitter"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ isset($about->instagram) ? $about->instagram : 'Not set'}}" target="_blank" class="social-link">
+            <a href="{{ isset($about->instagram) ? $about->instagram : 'Not set' }}" target="_blank"
+                class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
             </a>
         </li>
