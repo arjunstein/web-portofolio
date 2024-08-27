@@ -33,6 +33,7 @@ class DashboardController extends Controller
 
         // Mengambil data pengunjung berdasarkan sistem operasi
         $visitorOsData = Visitor::monthlyVisitorOs();
+        $topVisitor = Visitor::latest()->take(10)->get();
         $osLabels = $visitorOsData->pluck('visitor_os');
         $osCounts = $visitorOsData->pluck('count');
         $socmedVisitorData = Visitor::monthlySocmedVisitor();
@@ -50,7 +51,8 @@ class DashboardController extends Controller
             'osLabels',
             'osCounts',
             'socmedLabel',
-            'socmedCounts'
+            'socmedCounts',
+            'topVisitor',
         ));
     }
 }

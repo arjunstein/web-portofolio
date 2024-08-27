@@ -25,15 +25,20 @@ class FrontController extends Controller
         $projects = Project::orderBy('start_project', 'desc')->get();
         $certificates = Certificate::latest()->get();
 
-        $agent = new Agent();
-        $platform = $agent->platform();
-        $robot = $agent->isRobot();
+        $session = $request->session();
 
-        if (!$robot) {
-            $visitor = new Visitor;
-            $visitor->ip = $request->ip();
-            $visitor->visitor_os = $platform;
-            $visitor->save();
+        if (!$session->has('visitor_web_porto')) {
+            $agent = new Agent();
+            $platform = $agent->platform();
+            $robot = $agent->isRobot();
+
+            if (!$robot) {
+                $visitor = new Visitor;
+                $visitor->ip = $request->ip();
+                $visitor->visitor_os = $platform;
+                $visitor->save();
+            }
+            $session->put('visitor_web_porto', true);
         }
 
         return view('front_page', compact(
@@ -44,7 +49,6 @@ class FrontController extends Controller
             'user',
             'projects',
             'certificates',
-            'visitor'
         ));
     }
 

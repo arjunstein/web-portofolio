@@ -164,6 +164,37 @@
                             </div>
                         </div>
 
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Top 10 Visitor</h5>
+
+                                    <!-- Table with stripped rows -->
+                                    <table class="table datatable">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>IP</th>
+                                                <th>Visitor OS</th>
+                                                <th>Last visited</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($topVisitor as $e => $visit)
+                                                <tr>
+                                                    <td>{{ $e + 1 }}</td>
+                                                    <td>{{ $visit->ip }}</td>
+                                                    <td>{{ $visit->visitor_os }}</td>
+                                                    <td>{{ $visit->created_at }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                    <!-- End Table with stripped rows -->
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="profile-tab">
                         <!-- Left side columns -->
