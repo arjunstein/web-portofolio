@@ -55,22 +55,22 @@
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ isset($about->linkedin) / $about->linkedin : 'Not set'}}" target="_blank" class="social-link">
+            <a href="{{ isset($about->linkedin) ? $about->linkedin : 'Not set'}}" target="_blank" class="social-link">
                 <ion-icon name="logo-linkedin"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ isset($about->facebook) / $about->facebook : 'Not set'}}" target="_blank" class="social-link">
+            <a href="{{ isset($about->facebook) ? $about->facebook : 'Not set'}}" target="_blank" class="social-link">
                 <ion-icon name="logo-facebook"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ isset($about->twitter) / $about->twitter : 'Not set'}}" target="_blank" class="social-link">
+            <a href="{{ isset($about->twitter) ? $about->twitter : 'Not set'}}" target="_blank" class="social-link">
                 <ion-icon name="logo-twitter"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ isset($about->instagram) / $about->instagram : 'Not set'}}" target="_blank" class="social-link">
+            <a href="{{ isset($about->instagram) ? $about->instagram : 'Not set'}}" target="_blank" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
             </a>
         </li>
