@@ -776,6 +776,11 @@ main {
     scroll-padding-inline: 25px;
 }
 
+p svg {
+    width: 50px;
+    height: auto;
+}
+
 .clients-item {
     min-width: 50%;
     scroll-snap-align: start;
