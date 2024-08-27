@@ -5,7 +5,7 @@
     </figure>
     <div class="info-content">
         <h1 class="name" title="people">{{ isset($about->user->name) ? $about->user->name : 'John Dalton' }}</h1>
-        <p class="title">{{ $about->title }}</p>
+        <p class="title">{{ isset($about->title) ? $about->title : 'Not set' }}</p>
     </div>
     <button class="info_more-btn" data-sidebar-btn>
         <span>Show Contacts</span>
@@ -21,7 +21,8 @@
             </div>
             <div class="contact-info">
                 <p class="contact-title">Email</p>
-                <a href="mailto:{{ isset($user->email) ? $user->email : 'email.com' }}" class="contact-link">{{ isset($user->email) ? $user->email : 'email.com' }}</a>
+                <a href="mailto:{{ isset($user->email) ? $user->email : 'email.com' }}"
+                    class="contact-link">{{ isset($user->email) ? $user->email : 'email.com' }}</a>
             </div>
         </li>
         <li class="contact-item">
@@ -30,7 +31,8 @@
             </div>
             <div class="contact-info">
                 <p class="contact-title">Phone</p>
-                <a href="tel:+62{{ isset($about->phone) ? $about->phone : 'Not set' }}" class="contact-link">{{ '+62' . isset($about->phone) ? $about->phone : 'xxx' }}</a>
+                <a href="tel:+62{{ isset($about->phone) ? $about->phone : 'Not set' }}"
+                    class="contact-link">{{ '+62' . isset($about->phone) ? $about->phone : 'xxx' }}</a>
             </div>
         </li>
         <li class="contact-item">
@@ -39,34 +41,36 @@
             </div>
             <div class="contact-info">
                 <p class="contact-title">Address</p>
-                <address>{{ $about->address . ', ' }} {{ $about->country }}</address>
+                <address>{{ isset($about->address) ? $about->address : 'Not set' . ', ' }}
+                    {{ isset($about->country) ? $about->country : 'Not set' }}</address>
             </div>
         </li>
     </ul>
     <div class="separator"></div>
     <ul class="social-list">
         <li class="social-item">
-            <a href="{{ 'https://wa.me/62' . $about->whatsapp .'?text=Hai%20Arjun' }}" target="_blank" class="social-link">
+            <a href="{{ 'https://wa.me/62' . isset($about->whatsapp) ? $about->whatsapp : 'Not set' . '?text=Hai%20Arjun' }}" target="_blank"
+                class="social-link">
                 <ion-icon name="logo-whatsapp"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ $about->linkedin }}" target="_blank" class="social-link">
+            <a href="{{ isset($about->linkedin) / $about->linkedin : 'Not set'}}" target="_blank" class="social-link">
                 <ion-icon name="logo-linkedin"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ $about->facebook }}" target="_blank" class="social-link">
+            <a href="{{ isset($about->facebook) / $about->facebook : 'Not set'}}" target="_blank" class="social-link">
                 <ion-icon name="logo-facebook"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ $about->twitter }}" target="_blank" class="social-link">
+            <a href="{{ isset($about->twitter) / $about->twitter : 'Not set'}}" target="_blank" class="social-link">
                 <ion-icon name="logo-twitter"></ion-icon>
             </a>
         </li>
         <li class="social-item">
-            <a href="{{ $about->instagram }}" target="_blank" class="social-link">
+            <a href="{{ isset($about->instagram) / $about->instagram : 'Not set'}}" target="_blank" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
             </a>
         </li>
