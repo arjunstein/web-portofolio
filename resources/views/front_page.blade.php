@@ -30,7 +30,7 @@
                     <li class="timeline-item">
                         <h4 class="h4 timeline-item-title">{{ $exp->company_name }}</h4>
                         <p class="timeline-text">{{ $exp->title }}</p>
-                        <span>{{ \Carbon\Carbon::parse($exp->start_period)->format('F Y') . ' - ' . \Carbon\Carbon::parse($exp->end_period)->format('F Y') }}</span>
+                        <span>{{ \Carbon\Carbon::parse($exp->start_period)->format('F Y') . ' - ' . ($exp->end_period && \Carbon\Carbon::parse($exp->end_period)->isPast() ? \Carbon\Carbon::parse($exp->end_period)->format('F Y') : 'Present') }}</span>
                         <p class="timeline-text">
                             {{ $exp->jobdesc }}
                         </p>
