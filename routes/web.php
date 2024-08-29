@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontController::class, 'index']);
+Route::get('/project/{id}', [FrontController::class, 'show']);
 Route::post('/linkedin-click', [FrontController::class, 'linkedinClick'])->name('linkedin.click');
 Route::post('/ig-click', [FrontController::class, 'igClick'])->name('ig.click');
 Route::post('/fb-click', [FrontController::class, 'fbClick'])->name('fb.click');

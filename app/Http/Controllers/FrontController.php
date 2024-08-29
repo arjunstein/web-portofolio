@@ -52,6 +52,12 @@ class FrontController extends Controller
         ));
     }
 
+    public function show($id)
+    {
+        $project = Project::findOrFail($id);
+        return view('show_project', compact('project'));
+    }
+
     public function linkedinClick(Request $request)
     {
         $ip = $request->ip();
