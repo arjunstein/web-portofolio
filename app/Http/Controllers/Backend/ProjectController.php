@@ -57,7 +57,6 @@ class ProjectController extends Controller
         return redirect()->route('backend.project')->with('success', 'Project added successfully');
     }
 
-
     public function edit($id)
     {
         $about = About::latest('id')->first();
