@@ -75,16 +75,12 @@
         <section class="projects">
             <div class="filter-select-box">
                 <button class="filter-select" data-select>
-                    <div class="select-value" data-selecct-value>Select category</div>
-                    <div class="select-icon">
-                        <ion-icon name="chevron-down"></ion-icon>
-                    </div>
                 </button>
             </div>
             <ul class="project-list">
                 <li class="project-item active" data-filter-item data-category="all">
                     @forelse ($projects as $pjk)
-                        <a href="{{ url('/project/' . $pjk->id) }}">
+                        <a href="{{ url('project/' . $pjk->id) }}">
                             <figure class="project-img">
                                 <div class="project-item-icon-box">
                                     <ion-icon name="eye-outline"></ion-icon>
@@ -230,36 +226,6 @@
         </section>
     </article>
     @push('custom_script')
-        <script>
-            // Get the button:
-            let mybutton = document.getElementById("myBtn");
-
-            // When the user scrolls down 20px from the top of the document, show the button
-            window.onscroll = function() {
-                scrollFunction();
-            };
-
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    mybutton.style.display = "block";
-                } else {
-                    mybutton.style.display = "none";
-                }
-            }
-
-            // When the user clicks on the button, scroll to the top of the document
-            function topFunction() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-
-            // Add event listener to the button to call topFunction on click
-            mybutton.addEventListener('click', topFunction);
-        </script>
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {
                 $('#linkedin-link').on('click', function(event) {
