@@ -28,8 +28,8 @@ class ProjectController extends Controller
         $request->validate([
             'images.*' => 'required|mimes:png,jpg,jpeg|max:3000',
             'project_title' => 'required|string|max:100',
-            'url_image' => 'url|string',
-            'url_live_project' => 'url|string',
+            'url_image' => 'nullable|url|string',
+            'url_live_project' => 'nullable|url|string',
             'based' => 'required|string|max:100',
             'stack' => 'required|string|max:100',
             'start_project' => 'required|date',
