@@ -45,6 +45,28 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
+                                <label class="form-label">URL Image</label>
+                                <input type="text" name="url_image"
+                                    class="form-control @error('url_image') is-invalid @enderror"
+                                    value="{{ $projects->url_image }}">
+                                @error('url_image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <p>{{ $message }}</p>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">URL Live Project</label>
+                                <input type="text" name="url_live_project"
+                                    class="form-control @error('url_live_project') is-invalid @enderror"
+                                    value="{{ $projects->url_live_project }}">
+                                @error('url_live_project')
+                                    <span class="invalid-feedback" role="alert">
+                                        <p>{{ $message }}</p>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
                                 <label class="form-label">Based</label>
                                 <input type="text" name="based"
                                     class="form-control @error('based') is-invalid @enderror" value="{{ $projects->based }}"

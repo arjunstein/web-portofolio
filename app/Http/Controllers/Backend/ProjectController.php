@@ -28,6 +28,8 @@ class ProjectController extends Controller
         $request->validate([
             'images.*' => 'required|mimes:png,jpg,jpeg|max:3000',
             'project_title' => 'required|string|max:100',
+            'url_image' => 'url|string',
+            'url_live_project' => 'url|string',
             'based' => 'required|string|max:100',
             'stack' => 'required|string|max:100',
             'start_project' => 'required|date',
@@ -47,6 +49,8 @@ class ProjectController extends Controller
         $projects = new Project;
         $projects->image = json_encode($imagePaths); // Assuming you store images as JSON
         $projects->project_title = $request->project_title;
+        $projects->url_image = $request->url_image;
+        $projects->url_live_project = $request->url_live_project;
         $projects->based = $request->based;
         $projects->stack = $request->stack;
         $projects->start_project = $request->start_project;
@@ -69,6 +73,8 @@ class ProjectController extends Controller
         $request->validate([
             'image' => 'nullable|mimes:png,jpg,jpeg|max:300',
             'project_title' => 'required|string|max:100',
+            'url_image' => 'nullable|url|string',
+            'url_live_project' => 'nullable|url|string',
             'based' => 'required|string|max:100',
             'stack' => 'required|string|max:100',
             'start_project' => 'required|date',
@@ -91,6 +97,8 @@ class ProjectController extends Controller
             $projects = Project::findOrFail($id);
             $projects->image = $image->hashName();
             $projects->project_title = $request->project_title;
+            $projects->url_image = $request->url_image;
+            $projects->url_live_project = $request->url_live_project;
             $projects->based = $request->based;
             $projects->stack = $request->stack;
             $projects->start_project = $request->start_project;
@@ -100,6 +108,8 @@ class ProjectController extends Controller
         } else {
             $projects = Project::findOrFail($id);
             $projects->project_title = $request->project_title;
+            $projects->url_image = $request->url_image;
+            $projects->url_live_project = $request->url_live_project;
             $projects->based = $request->based;
             $projects->stack = $request->stack;
             $projects->start_project = $request->start_project;
