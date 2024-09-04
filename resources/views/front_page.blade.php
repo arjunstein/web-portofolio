@@ -80,7 +80,7 @@
             <ul class="project-list">
                 <li class="project-item active" data-filter-item data-category="all">
                     @forelse ($projects as $pjk)
-                        <a href="{{ url('project/' . $pjk->id) }}">
+                        <a href="{{ $pjk->url_image }}" target="_blank">
                             <figure class="project-img">
                                 <div class="project-item-icon-box">
                                     <ion-icon name="eye-outline"></ion-icon>

@@ -19,7 +19,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Add Project</h5>
-                        <form class="row g-3" action="{{ route('backend.project.store') }}" method="POST" enctype="multipart/form-data">
+                        <form class="row g-3" action="{{ route('backend.project.store') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-6">
                                 <label class="form-label">Image</label>
@@ -37,6 +38,28 @@
                                     class="form-control @error('project_title') is-invalid @enderror"
                                     value="{{ old('project_title') }}">
                                 @error('project_title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <p>{{ $message }}</p>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">URL Image</label>
+                                <input type="text" name="url_image"
+                                    class="form-control @error('url_image') is-invalid @enderror"
+                                    value="{{ old('url_image') }}">
+                                @error('url_image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <p>{{ $message }}</p>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">URL Live Project</label>
+                                <input type="text" name="url_live_project"
+                                    class="form-control @error('url_live_project') is-invalid @enderror"
+                                    value="{{ old('url_live_project') }}">
+                                @error('url_live_project')
                                     <span class="invalid-feedback" role="alert">
                                         <p>{{ $message }}</p>
                                     </span>
