@@ -26,7 +26,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'images.*' => 'required|mimes:png,jpg,jpeg|max:3000',
+            'images' => 'required|mimes:png,jpg,jpeg|max:3000',
             'project_title' => 'required|string|max:100',
             'url_image' => 'nullable|url|string',
             'url_live_project' => 'nullable|url|string',
@@ -37,17 +37,13 @@ class ProjectController extends Controller
             'description' => 'required|string|max:255',
         ]);
 
-        $imagePaths = [];
-
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $image->storeAs('public/project', $image->hashName());
-                $imagePaths[] = $image->hashName();
-            }
+            $image = $request->file('image');
+            $image->storeAs('public/project/', $image->hashName());
         }
 
         $projects = new Project;
-        $projects->image = json_encode($imagePaths); // Assuming you store images as JSON
+        $projects->image = $image->hashName();
         $projects->project_title = $request->project_title;
         $projects->url_image = $request->url_image;
         $projects->url_live_project = $request->url_live_project;
