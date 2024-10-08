@@ -85,15 +85,10 @@
                                 <div class="project-item-icon-box">
                                     <ion-icon name="eye-outline"></ion-icon>
                                 </div>
-                                @php
-                                    $images = json_decode($pjk->image, true);
-                                @endphp
-                                @if (is_array($images))
-                                    @foreach ($images as $image)
-                                        <img src="{{ asset('storage/project/' . $image) }}"
+                                    @foreach ($projects as $pjk)
+                                        <img src="{{ asset('storage/project/' . $pjk->image) }}"
                                             alt="{{ $pjk->project_title }}" loading="lazy">
                                     @endforeach
-                                @endif
                             </figure>
                             <h3 class="project-title">{{ ucwords($pjk->project_title) }}</h3>
                             <p class="project-category">{{ Ucwords($pjk->based) }}</p>
