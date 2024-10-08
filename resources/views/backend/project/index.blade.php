@@ -40,14 +40,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($projects as $e => $project)
-                                @php
-                                    $images = json_decode($project->image);
-                                    $thumbImage = $images[0];
-                                @endphp
+                                @forelse ($projects as $e => $project)
                                     <tr>
                                         <td>{{ $e + 1 }}</td>
-                                        <td><img src="{{ asset('storage/project/' . $thumbImage) }}" alt="{{ $project->project_title }}" width="80px"></td>
+                                        <td><img src="{{ asset('storage/project/' . $project->image) }}"
+                                                alt="{{ $project->project_title }}" width="80px"></td>
                                         <td>{{ $project->project_title }}</td>
                                         <td>{{ $project->based }}</td>
                                         <td>{{ $project->start_project }}</td>
@@ -66,7 +63,11 @@
                                             </form>
                                         </td>
                                     </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="7">No Data</td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                         <!-- End Table with stripped rows -->
