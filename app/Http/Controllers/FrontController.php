@@ -12,18 +12,41 @@ use App\Models\User;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
+use Illuminate\Support\Facades\Cache;
 
 class FrontController extends Controller
 {
     public function index(Request $request)
     {
-        $user = User::latest('id')->first();
-        $about = About::latest('id')->first();
-        $experience = Experience::orderBy('end_period', 'desc')->get();
-        $skills = Skill::orderBy('id', 'desc')->get();
-        $education = Education::orderBy('start_year', 'desc')->get();
-        $projects = Project::orderBy('start_project', 'desc')->get();
-        $certificates = Certificate::orderBy('publish_date', 'desc')->get();
+        $cacheDuration = 60 * 60 * 6;
+
+        $user = Cache::remember('user_latest', $cacheDuration, function () {
+            return User::latest('id')->first();
+        });
+
+        $about = Cache::remember('about_latest', $cacheDuration, function () {
+            return About::latest('id')->first();
+        });
+
+        $experience = Cache::remember('experience_all', $cacheDuration, function () {
+            return Experience::orderBy('end_period', 'desc')->get();
+        });
+
+        $skills = Cache::remember('skills_all', $cacheDuration, function () {
+            return Skill::orderBy('id', 'desc')->get();
+        });
+
+        $education = Cache::remember('education_all', $cacheDuration, function () {
+            return Education::orderBy('start_year', 'desc')->get();
+        });
+
+        $projects = Cache::remember('projects_all', $cacheDuration, function () {
+            return Project::orderBy('start_project', 'desc')->get();
+        });
+
+        $certificates = Cache::remember('certificates_all', $cacheDuration, function () {
+            return Certificate::orderBy('publish_date', 'desc')->get();
+        });
 
         $session = $request->session();
 
@@ -33,7 +56,7 @@ class FrontController extends Controller
             $robot = $agent->isRobot();
 
             if (!$robot) {
-                $visitor = new Visitor;
+                $visitor = new Visitor();
                 $visitor->ip = $request->ip();
                 $visitor->visitor_os = $platform;
                 $visitor->save();
@@ -41,6 +64,7 @@ class FrontController extends Controller
             $session->put('visitor_web_porto', true);
         }
 
+        // Return the view with cached data
         return view('front_page', compact(
             'about',
             'experience',
@@ -48,7 +72,7 @@ class FrontController extends Controller
             'skills',
             'user',
             'projects',
-            'certificates',
+            'certificates'
         ));
     }
 
