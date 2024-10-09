@@ -23,7 +23,7 @@ class FrontController extends Controller
         $skills = Skill::orderBy('id', 'desc')->get();
         $education = Education::orderBy('start_year', 'desc')->get();
         $projects = Project::orderBy('start_project', 'desc')->get();
-        $certificates = Certificate::latest()->get();
+        $certificates = Certificate::orderBy('publish_date', 'desc')->get();
 
         $session = $request->session();
 
